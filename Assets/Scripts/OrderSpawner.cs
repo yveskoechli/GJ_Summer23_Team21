@@ -17,7 +17,7 @@ public class OrderSpawner : MonoBehaviour
         
     }
 
-    public void CheckOrders()
+    public void CheckOrders() // Check all open Orders for a match -> If multiple matches, take match with lowest remaining time.
     {
         
     }
