@@ -6,12 +6,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int HorizontalSpeed = Animator.StringToHash("horizontalSpeed");
+    private static readonly int VerticalSpeed = Animator.StringToHash("verticalSpeed");
+    
     #region Inspector
 
     [SerializeField] private float moveSpeed = 10f;
+
+    [SerializeField] private SpriteRenderer carryIngredientSprite;
     //[SerializeField] private float jumpForce = 15f;
 
-    [SerializeField] private LayerMask groundLayer;
+    //[SerializeField] private LayerMask groundLayer;
 
     #endregion
 
@@ -26,6 +31,8 @@ public class PlayerController : MonoBehaviour
     
     private Vector2 moveInput;
 
+    private Animator animator;
+    
     private CircleCollider2D interactionArea;
 
     [SerializeField] private Ingredient actualIngredient;
@@ -33,17 +40,22 @@ public class PlayerController : MonoBehaviour
 
     private bool canInteractKettle = false;
     
+    
+
     #region Unity Event Functions
     private void Awake()
     {
         gamecontroller = FindObjectOfType<GameController>();
-
         kettle = FindObjectOfType<KettleController>();
         
         input = new GameInput();
         rbPlayer = GetComponent<Rigidbody2D>();
         spritePlayer = GetComponent<SpriteRenderer>();
 
+        animator = GetComponent<Animator>();
+
+        carryIngredientSprite.enabled = false;
+        
         interactionArea = GetComponentInChildren<CircleCollider2D>();
 
         moveAction = input.Player.Move;
@@ -62,6 +74,7 @@ public class PlayerController : MonoBehaviour
         //TODO Update stuff..
         ReadInput();
         Move(moveInput);
+        UpdateAnimation();
     }
 
     private void OnDisable()
@@ -102,7 +115,28 @@ public class PlayerController : MonoBehaviour
         rbPlayer.velocity = moveInput * moveSpeed;
         
         if (moveInput.x == 0) { return; }
+
+
+
+        if (moveInput.y <= -0.25 || moveInput.y >= 0.25)
+        {
+            spritePlayer.flipX = true;
+            return;
+        }
+        
         spritePlayer.flipX = moveInput.x < 0;
+        
+        /*
+        if (moveInput.x < 0)
+        {
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+        
+        */
 
         
         
@@ -110,12 +144,25 @@ public class PlayerController : MonoBehaviour
     
     private void Collect(InputAction.CallbackContext _)
     {
-        Debug.Log("Collected");
-
+        if (canInteractKettle)
+        {
+            if (carryedIngredient != null)
+            {
+                kettle.AddToKettle(carryedIngredient);
+                CarryIngredient(carryedIngredient, false);
+                carryedIngredient = null;
+                
+                Debug.Log("Ingredient delivered!");
+            }
+        }
+        
         if (actualIngredient != null)
         {
             actualIngredient.Collected();
             carryedIngredient = actualIngredient;
+            CarryIngredient(carryedIngredient, true);
+            
+            Debug.Log("Ingredient collected!");
         }
         else
         {
@@ -133,12 +180,15 @@ public class PlayerController : MonoBehaviour
     {
         if (canInteractKettle)
         {
-            Debug.Log("Interacted with Kettle");
-            if (carryedIngredient != null)
+            Debug.Log("Started Brewing");
+            kettle.CheckOrder();
+            /*if (carryedIngredient != null)
             {
                 kettle.AddToKettle(carryedIngredient);
-                //carryedIngredient = null;
-            }
+                CarryIngredient(carryedIngredient, false);
+                carryedIngredient = null;
+                
+            }*/
         }
         else
         {
@@ -150,6 +200,13 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
+    private void CarryIngredient(Ingredient carriedIngredient, bool show)
+    {
+        carryIngredientSprite.enabled = show;
+        carryIngredientSprite.sprite = carriedIngredient.GetComponent<SpriteRenderer>().sprite;
+        carryIngredientSprite.color = carriedIngredient.GetComponent<SpriteRenderer>().color;
+    }
+    
     #region Triggers
 
     private void OnTriggerEnter(Collider other)
@@ -163,7 +220,18 @@ public class PlayerController : MonoBehaviour
     {
         actualIngredient = ingredient;
     }
-    
+
+
+    #region Animations
+
+    private void UpdateAnimation()
+    {
+        Vector2 velocity = rbPlayer.velocity;
+        animator.SetFloat(HorizontalSpeed, velocity.x);
+        animator.SetFloat(VerticalSpeed, velocity.y);
+    }
+
+    #endregion
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -176,6 +244,7 @@ public class PlayerController : MonoBehaviour
        if (col.CompareTag("Kettle"))
        {
            canInteractKettle = true;
+           kettle.ShowBrewButton(true);
        }
     }
 
@@ -189,6 +258,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Kettle"))
         {
             canInteractKettle = false;
+            kettle.ShowBrewButton(false);
         }
     }
 

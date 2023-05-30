@@ -10,6 +10,8 @@ public class KettleController : MonoBehaviour
 
     [SerializeField] private List<Ingredient> ingredients;
 
+    [SerializeField] private SpriteRenderer brewButtonImage;
+    
     private OrderSpawner orderSpawner;
     
     private int maxListLength = 3;
@@ -19,6 +21,8 @@ public class KettleController : MonoBehaviour
         ingredients = new List<Ingredient>();
 
         orderSpawner = FindObjectOfType<OrderSpawner>();
+        
+        ShowBrewButton(false);
 
     }
 
@@ -29,7 +33,7 @@ public class KettleController : MonoBehaviour
         int listLength = ingredients.Count;
         if (listLength >= maxListLength)
         {
-            CheckOrder(); 
+            //CheckOrder(); 
             return;
         }
         ingredients.Insert(listLength, ingredient);
@@ -39,7 +43,7 @@ public class KettleController : MonoBehaviour
     }
 
 
-    private void CheckOrder()
+    public void CheckOrder()
     {
         orderSpawner.CheckOrders();
     }
@@ -48,5 +52,12 @@ public class KettleController : MonoBehaviour
     {
         ingredients.Clear();
         Debug.Log("Kettle cleared!");
+    }
+
+    public void ShowBrewButton(bool show)
+    {
+        var color = brewButtonImage.color;
+        color.a = show ? 1 : 0;
+        brewButtonImage.color = color;
     }
 }
