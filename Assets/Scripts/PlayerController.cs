@@ -15,21 +15,32 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    private GameController gamecontroller;
+    private KettleController kettle;
+    
     private GameInput input;
     private InputAction moveAction;
 
     private Rigidbody2D rbPlayer;
+    private SpriteRenderer spritePlayer;
+    
     private Vector2 moveInput;
 
     private CircleCollider2D interactionArea;
 
     private Ingredient actualIngredient;
+    private Ingredient carryedIngredient;
+
+    private bool canInteractKettle = false;
     
     #region Unity Event Functions
     private void Awake()
     {
+        gamecontroller = FindObjectOfType<GameController>();
+        
         input = new GameInput();
         rbPlayer = GetComponent<Rigidbody2D>();
+        spritePlayer = GetComponent<SpriteRenderer>();
 
         interactionArea = GetComponentInChildren<CircleCollider2D>();
 
@@ -87,6 +98,12 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 moveInput)
     {
         rbPlayer.velocity = moveInput * moveSpeed;
+        
+        if (moveInput.x == 0) { return; }
+        spritePlayer.flipX = moveInput.x < 0;
+
+        
+        
     }
     
     private void Collect(InputAction.CallbackContext _)
@@ -96,6 +113,7 @@ public class PlayerController : MonoBehaviour
         if (actualIngredient != null)
         {
             actualIngredient.Collected();
+            carryedIngredient = actualIngredient;
         }
         else
         {
@@ -111,7 +129,18 @@ public class PlayerController : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext _)
     {
-        Debug.Log("Interacted");
+        if (canInteractKettle)
+        {
+            Debug.Log("Interacted with Kettle");
+            if (carryedIngredient != null)
+            {
+                
+            }
+        }
+        else
+        {
+            Debug.Log("Kettle not near by Player");
+        }
         
         /*if (GroundCheck())
         {
@@ -144,6 +173,24 @@ public class PlayerController : MonoBehaviour
         {
             actualIngredient = col.GetComponent<Ingredient>();
             Debug.Log("Actual_Ingredient_Selected");
+        }
+
+       if (col.CompareTag("Kettle"))
+       {
+           canInteractKettle = true;
+       }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ingredient")&&actualIngredient == other.GetComponent<Ingredient>())
+        {
+            actualIngredient = null;
+        }
+        
+        if (other.CompareTag("Kettle"))
+        {
+            canInteractKettle = false;
         }
     }
 
