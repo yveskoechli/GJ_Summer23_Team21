@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private CircleCollider2D interactionArea;
 
-    private Ingredient actualIngredient;
-    private Ingredient carryedIngredient;
+    [SerializeField] private Ingredient actualIngredient;
+    [SerializeField] private Ingredient carryedIngredient;
 
     private bool canInteractKettle = false;
     
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         gamecontroller = FindObjectOfType<GameController>();
+
+        kettle = FindObjectOfType<KettleController>();
         
         input = new GameInput();
         rbPlayer = GetComponent<Rigidbody2D>();
@@ -134,7 +136,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interacted with Kettle");
             if (carryedIngredient != null)
             {
-                
+                kettle.AddToKettle(carryedIngredient);
+                //carryedIngredient = null;
             }
         }
         else
@@ -142,11 +145,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Kettle not near by Player");
         }
         
-        /*if (GroundCheck())
-        {
-            rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, jumpForce);
-            Debug.Log("Jump performed");
-        }*/
     }
     
     #endregion
