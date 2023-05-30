@@ -5,13 +5,7 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-    public enum IngredientType
-    {
-        Herb,
-        FrogEye,
-        StarDust,
-        CrowFeet
-    }
+
 
     [SerializeField] private IngredientType ingredientType;
 
