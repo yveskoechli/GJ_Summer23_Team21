@@ -485,7 +485,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 480, y: 270}
+  m_ReferenceResolution: {x: 640, y: 260}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
@@ -1370,6 +1370,18 @@ PrefabInstance:
     - target: {fileID: 4068199158309022613, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_Name
       value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4068199159807957940, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_text
