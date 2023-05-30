@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     [SerializeField] private SpriteRenderer carryIngredientSprite;
+    
     //[SerializeField] private float jumpForce = 15f;
 
     //[SerializeField] private LayerMask groundLayer;
@@ -114,17 +115,8 @@ public class PlayerController : MonoBehaviour
     {
         rbPlayer.velocity = moveInput * moveSpeed;
         
-        if (moveInput.x == 0) { return; }
-
-
-
-        if (moveInput.y <= -0.25 || moveInput.y >= 0.25)
-        {
-            spritePlayer.flipX = true;
-            return;
-        }
         
-        spritePlayer.flipX = moveInput.x < 0;
+        //spritePlayer.flipX = moveInput.x < 0;
         
         /*
         if (moveInput.x < 0)
@@ -229,6 +221,36 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = rbPlayer.velocity;
         animator.SetFloat(HorizontalSpeed, velocity.x);
         animator.SetFloat(VerticalSpeed, velocity.y);
+        
+        Debug.Log("Veloctiy x: " + velocity.x + " Velocity y: " + velocity.y);
+        
+        if (velocity.x == 0 && velocity.y == 0) { return; }
+
+        if (velocity.y <= -8) // Down
+        {
+            spritePlayer.flipX = true;
+            carryIngredientSprite.transform.localPosition = new Vector3(0f, 0f, 0f);
+            carryIngredientSprite.sortingOrder = 11;
+            return;
+        }
+
+        carryIngredientSprite.sortingOrder = 9;
+        
+        if (velocity.y >= 8) // Up
+        {
+            spritePlayer.flipX = false;
+            carryIngredientSprite.transform.localPosition = new Vector3(0f, 1.5f, 0f);
+            return;
+        }
+
+        if (velocity.x < 0)    // Left
+        {   
+            spritePlayer.flipX = true;
+            carryIngredientSprite.transform.localPosition = new Vector3(-1.18f, 0.682f, 0f);
+            return;
+        }
+        spritePlayer.flipX = false;
+        carryIngredientSprite.transform.localPosition = new Vector3(1.18f, 0.682f, 0f);
     }
 
     #endregion
