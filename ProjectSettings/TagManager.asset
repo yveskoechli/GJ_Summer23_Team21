@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Forest
+    uniqueID: 2446148683
+    locked: 0
   - name: Background
     uniqueID: 144134529
     locked: 0
