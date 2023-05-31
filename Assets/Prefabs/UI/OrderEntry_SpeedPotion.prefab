@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 17882822103892542, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3a5907e94dd68f40b6ac0757c077d83, type: 3}
     - target: {fileID: 1571761194544163766, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -51,6 +55,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6209857403648754715, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc4114965e30ef1429e9d9f5346a424c, type: 3}
     - target: {fileID: 6549523712933349378, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -160,6 +168,14 @@ PrefabInstance:
       value: OrderEntry_SpeedPotion
       objectReference: {fileID: 0}
     - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: potion
+      value: 
+      objectReference: {fileID: 8275708065143099080, guid: ae8fb2ebdce7a9244af6d1e70dc95ddb, type: 3}
+    - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: potionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
       propertyPath: neededIngredients.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -195,6 +211,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8486744674398126316, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7b6de3d15dee92848888061de79e7044, type: 3}
     - target: {fileID: 8977040968309337313, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

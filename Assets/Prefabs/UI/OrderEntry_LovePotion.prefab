@@ -148,6 +148,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: potion
+      value: 
+      objectReference: {fileID: 8275708065143099080, guid: d3832495579e65343ab9e55588f96ff5, type: 3}
+    - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: potionType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
       propertyPath: neededIngredients.Array.size
       value: 3
       objectReference: {fileID: 0}

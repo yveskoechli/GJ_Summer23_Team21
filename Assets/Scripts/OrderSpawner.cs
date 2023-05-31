@@ -16,7 +16,9 @@ public class OrderSpawner : MonoBehaviour
     private GameController gameController;
     
     private bool canStartNextOrder = false;
-    
+
+    [SerializeField] private int maxOrders = 10;
+    private int orderCount = 0;
     
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class OrderSpawner : MonoBehaviour
     {
         if (canStartNextOrder)
         {
-            StartCoroutine(WaitForNextOrder(2f));
+            StartCoroutine(WaitForNextOrder(4f));
             canStartNextOrder = false;
         }
         
@@ -37,14 +39,22 @@ public class OrderSpawner : MonoBehaviour
 
     private void InstantiateOrder(int range)
     {
-        if (actualOrders.Count >=5)
+        if (orderCount >=maxOrders)
         {
-            gameController.GameOver();
+            canStartNextOrder = false;
+            Debug.Log("All Orders for this Level got in.");
             return;
         }
-        GameObject newOrder = Instantiate (orderPrefabs[Random.Range(0,orderPrefabs.Count)], Vector3.zero, Quaternion.identity) as GameObject;
+        if (actualOrders.Count >=5)
+        {
+            //gameController.GameOver();
+            canStartNextOrder = false;
+            return;
+        }
+        GameObject newOrder = Instantiate (orderPrefabs[Random.Range(0,range)], Vector3.zero, Quaternion.identity) as GameObject;
         newOrder.transform.SetParent(this.transform, false);
         actualOrders.Insert(0, newOrder);
+        orderCount++;
         canStartNextOrder = true;
     }
 
@@ -52,11 +62,24 @@ public class OrderSpawner : MonoBehaviour
     {
         
     }
+
+    public void RemoveFromOrderList(Order order)
+    {
+        actualOrders.Remove(order.gameObject);
+        StartCoroutine(WaitForCanStart(4f));
+    }
+    
     
     private IEnumerator WaitForNextOrder(float time)
     {
         yield return new WaitForSeconds(time);
-        InstantiateOrder(4);  // Range for more difficulty and variety in higher levels -> TODO Take Global Value for range from GameController
+        InstantiateOrder(5);  // Range for more difficulty and variety in higher levels -> TODO Take Global Value for range from GameController
+    }
+
+    private IEnumerator WaitForCanStart(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canStartNextOrder = true;
     }
     
 }

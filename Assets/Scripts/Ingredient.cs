@@ -3,51 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour
+public class Ingredient : Item
 {
-    [SerializeField] private List<Sprite> ingredientSprites;
-
-    [SerializeField] private IngredientType ingredientType;
     
-    [SerializeField] private bool prepared = false;
-
-    private SpriteRenderer ingredientSprite;
-
+    [SerializeField] private IngredientType ingredientType;
 
     private void OnValidate()
     {
-        ingredientSprite = GetComponent<SpriteRenderer>();
-        ingredientSprite.sprite = ingredientSprites[(int)ingredientType];
-    }
-
-    private void Awake()
-    {
-        //ingredientSprite = GetComponent<SpriteRenderer>();
-        //ingredientSprite.sprite = ingredientSprites[(int)ingredientType];
-    }
-
-    public void Collected()
-    {
-        Debug.Log(ingredientType.ToString() + " collected!");
-        
-    }
-
-    public void Delivered()
-    {
-        Debug.Log(ingredientType.ToString() + " delivered");
-    }
-
-    public bool IsPrepared()
-    {
-        return prepared;
+        GetComponent<SpriteRenderer>().sprite = sprites[(int)ingredientType];
     }
     
-   /* private void OnTriggerEnter2D(Collider2D col)
+
+    public IngredientType GetIngredientType()
     {
-        if (col.CompareTag("Player"))
-        {
-            col.GetComponent<PlayerController>().SetSelectedIngredient(this);
-            Debug.Log("Set Ingredient to Player");
-        }
-    }*/
+        return ingredientType;
+    }
+    
 }

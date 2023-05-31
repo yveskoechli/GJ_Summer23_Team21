@@ -135,9 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  carryIngredientSprite: {fileID: 5961125211888187552}
+  carrySprite: {fileID: 5961125211888187552}
   actualIngredient: {fileID: 0}
-  carryedIngredient: {fileID: 0}
+  carryedItem: {fileID: 0}
 --- !u!50 &1538841735312088737
 Rigidbody2D:
   serializedVersion: 4

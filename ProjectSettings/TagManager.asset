@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ingredient
   - Kettle
+  - Potion
   layers:
   - Default
   - TransparentFX
