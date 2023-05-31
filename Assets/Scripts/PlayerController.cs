@@ -258,10 +258,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
        if (col.CompareTag("Ingredient"))
-        {
+       {
             actualIngredient = col.GetComponent<Ingredient>();
             Debug.Log("Actual_Ingredient_Selected");
-        }
+       }
 
        if (col.CompareTag("Kettle"))
        {

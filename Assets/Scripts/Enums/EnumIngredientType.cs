@@ -1,7 +1,8 @@
 public enum IngredientType
 {
-    Herb,
-    FrogEye,
+    DarkHerb,
+    SnakeEye,
     StarDust,
-    CrowFeet
+    CrowFeet,
+    TrollBlood
 }

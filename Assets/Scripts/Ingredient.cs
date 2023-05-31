@@ -9,6 +9,8 @@ public class Ingredient : MonoBehaviour
 
     [SerializeField] private IngredientType ingredientType;
 
+    [SerializeField] private bool prepared = false;
+    
     private void Awake()
     {
     }
@@ -24,6 +26,11 @@ public class Ingredient : MonoBehaviour
         Debug.Log(ingredientType.ToString() + " delivered");
     }
 
+    public bool IsPrepared()
+    {
+        return prepared;
+    }
+    
    /* private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
