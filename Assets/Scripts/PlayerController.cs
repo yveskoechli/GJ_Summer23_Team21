@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 10f;
 
-    [SerializeField] private SpriteRenderer carryIngredientSprite;
+    [SerializeField] private SpriteRenderer carrySprite;
     
     //[SerializeField] private float jumpForce = 15f;
 
@@ -37,11 +38,15 @@ public class PlayerController : MonoBehaviour
     private CircleCollider2D interactionArea;
 
     [SerializeField] private Ingredient actualIngredient;
-    [SerializeField] private Ingredient carryedIngredient;
+    [SerializeField] private Item carryedItem;
 
     private bool canInteractKettle = false;
-    
-    
+
+    private bool IsCarryingPotion => carryedItem is Potion;
+    private bool IsCarryingIngredient => carryedItem is Ingredient;
+
+    private bool IsCarryingNull => carryedItem == null;
+
 
     #region Unity Event Functions
     private void Awake()
@@ -55,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        carryIngredientSprite.enabled = false;
+        carrySprite.enabled = false;
         
         interactionArea = GetComponentInChildren<CircleCollider2D>();
 
@@ -136,23 +141,38 @@ public class PlayerController : MonoBehaviour
     
     private void Collect(InputAction.CallbackContext _)
     {
-        if (canInteractKettle)
+        if (canInteractKettle)      // If in Interaction Area from Kettle
         {
-            if (carryedIngredient != null)
+            if (IsCarryingIngredient)
             {
-                kettle.AddToKettle(carryedIngredient);
-                CarryIngredient(carryedIngredient, false);
-                carryedIngredient = null;
+                kettle.AddToKettle((Ingredient)carryedItem);
+                CarryItem(null, false);
+                carryedItem = null;
                 
                 Debug.Log("Ingredient delivered!");
             }
+            else if (IsCarryingNull)
+            {
+                carryedItem = kettle.GetBrewedPotion();
+                if (IsCarryingPotion)
+                {
+                    CarryItem(carryedItem, true);
+                }
+                
+            }
+            return;
+        }
+
+        if (!IsCarryingNull)
+        {
+            return;
         }
         
         if (actualIngredient != null)
         {
-            actualIngredient.Collected();
-            carryedIngredient = actualIngredient;
-            CarryIngredient(carryedIngredient, true);
+            //actualIngredient.Collected();
+            carryedItem = actualIngredient;
+            CarryItem(carryedItem, true);
             
             Debug.Log("Ingredient collected!");
         }
@@ -161,11 +181,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No Ingredient triggered");
         }
         
-        /*if (GroundCheck())
-        {
-            rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, jumpForce);
-            Debug.Log("Jump performed");
-        }*/
+
     }
 
     private void Interact(InputAction.CallbackContext _)
@@ -173,7 +189,7 @@ public class PlayerController : MonoBehaviour
         if (canInteractKettle)
         {
             Debug.Log("Started Brewing");
-            kettle.CheckOrder();
+            kettle.BrewPotion();
             /*if (carryedIngredient != null)
             {
                 kettle.AddToKettle(carryedIngredient);
@@ -192,12 +208,16 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
-    private void CarryIngredient(Ingredient carriedIngredient, bool show)
+    private void CarryItem(Item carriedItem, bool show)
     {
-        carryIngredientSprite.enabled = show;
-        carryIngredientSprite.sprite = carriedIngredient.GetComponent<SpriteRenderer>().sprite;
-        carryIngredientSprite.color = carriedIngredient.GetComponent<SpriteRenderer>().color;
+        carrySprite.enabled = show;
+        if(show)
+        {
+            carrySprite.sprite = carriedItem.GetComponent<SpriteRenderer>().sprite;
+            carrySprite.color = carriedItem.GetComponent<SpriteRenderer>().color;
+        }
     }
+    
     
     #region Triggers
 
@@ -229,28 +249,28 @@ public class PlayerController : MonoBehaviour
         if (velocity.y <= -8) // Down
         {
             spritePlayer.flipX = true;
-            carryIngredientSprite.transform.localPosition = new Vector3(0f, 0f, 0f);
-            carryIngredientSprite.sortingOrder = 11;
+            carrySprite.transform.localPosition = new Vector3(0f, 0f, 0f);
+            carrySprite.sortingOrder = 11;
             return;
         }
 
-        carryIngredientSprite.sortingOrder = 9;
+        carrySprite.sortingOrder = 9;
         
         if (velocity.y >= 8) // Up
         {
             spritePlayer.flipX = false;
-            carryIngredientSprite.transform.localPosition = new Vector3(0f, 2.5f, 0f);
+            carrySprite.transform.localPosition = new Vector3(0f, 2.5f, 0f);
             return;
         }
 
         if (velocity.x < 0)    // Left
         {   
             spritePlayer.flipX = true;
-            carryIngredientSprite.transform.localPosition = new Vector3(-1.18f, 0.682f, 0f);
+            carrySprite.transform.localPosition = new Vector3(-1.18f, 0.682f, 0f);
             return;
         }
         spritePlayer.flipX = false;
-        carryIngredientSprite.transform.localPosition = new Vector3(1.18f, 0.682f, 0f);
+        carrySprite.transform.localPosition = new Vector3(1.18f, 0.682f, 0f);
     }
 
     #endregion

@@ -2,27 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Order : MonoBehaviour
 {
 
+    [SerializeField] private Potion potion;
+    
     [SerializeField] private List<IngredientType> neededIngredients;
 
     [SerializeField] private float timeToFulfill = 4f;
 
     [SerializeField] private Image fillAmountImage;
 
+    private OrderSpawner orderSpawner;
+    
     private float timeLeft = 0;
 
     private bool canCountDown = true;
 
-    private Color greenColor = new Color(109, 213, 110);
-    private Color redColor = new Color(192, 59, 56);
+    
 
     private void Awake()
     {
         timeLeft = timeToFulfill;
+        orderSpawner = FindObjectOfType<OrderSpawner>();
     }
 
     private void Update()
@@ -46,7 +51,8 @@ public class Order : MonoBehaviour
         {
             Debug.Log("You was to slow...");
             canCountDown = false;
-            Destroy(this.gameObject);
+            orderSpawner.RemoveFromOrderList(this);
+            Destroy(this.gameObject, 0.1f);
             //StartCoroutine(DestroyDelayed(0f));
         }
         
@@ -72,7 +78,16 @@ public class Order : MonoBehaviour
         return true;
     }
 
+    public List<IngredientType> GetNeededIngredientTypes()
+    {
+        return neededIngredients;
+    }
 
+    public Potion GetPotion()
+    {
+        return potion;
+    }
+    
     private IEnumerator DestroyDelayed(float time)
     {
         yield return new WaitForSeconds(time);

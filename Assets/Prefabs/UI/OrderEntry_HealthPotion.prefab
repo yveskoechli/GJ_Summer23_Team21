@@ -168,6 +168,14 @@ PrefabInstance:
       value: OrderEntry_HealthPotion
       objectReference: {fileID: 0}
     - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: potion
+      value: 
+      objectReference: {fileID: 8275708065143099080, guid: 219ca82d06eaa7148aa228f10d17840a, type: 3}
+    - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
+      propertyPath: potionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643893923609785579, guid: 093bc2f60ba1abf4795554f6ab151adf, type: 3}
       propertyPath: neededIngredients.Array.size
       value: 2
       objectReference: {fileID: 0}
