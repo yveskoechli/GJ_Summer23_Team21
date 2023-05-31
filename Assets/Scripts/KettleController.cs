@@ -36,7 +36,7 @@ public class KettleController : MonoBehaviour
         }
         ingredients.Insert(listLength, ingredient);
         ingredientsSprites[listLength].sprite = ingredient.GetComponent<SpriteRenderer>().sprite;
-        ingredientsSprites[listLength].color = ingredient.GetComponent<SpriteRenderer>().color; // Color only for Prototype (can be deleted when adding real Sprites)
+        //ingredientsSprites[listLength].color = ingredient.GetComponent<SpriteRenderer>().color; // Color only for Prototype (can be deleted when adding real Sprites)
         Debug.Log(ingredient.name + "added to Kettle");
     }
 
