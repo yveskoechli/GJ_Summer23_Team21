@@ -52,7 +52,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.875, y: 1.875}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -100,9 +100,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -92577155
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb0e07f05a1267a47a1661746b770a90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eefc25e707376042ac3dac0db2b50d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientSprites:
+  - {fileID: 21300000, guid: fb0e07f05a1267a47a1661746b770a90, type: 3}
+  - {fileID: 21300000, guid: 62c6a9fa0dd07eb46ae82165dd203165, type: 3}
+  - {fileID: 21300000, guid: c4e49419a04ca6343b3d90e8b5a9d2cc, type: 3}
+  - {fileID: 21300000, guid: cbb2b0843683d6f46a0ea14c2afe0599, type: 3}
+  - {fileID: 21300000, guid: dda3c40d4d537d74482f885bcdc04713, type: 3}
+  - {fileID: 21300000, guid: ebf53c498b27fef4899eaa8764b35fc6, type: 3}
+  - {fileID: 21300000, guid: 7f9e50779c057bc4f86bc878a0451a9a, type: 3}
+  - {fileID: 21300000, guid: 88eb27b62e0ef1f47aa3743e787b4767, type: 3}
   ingredientType: 0
+  prepared: 0
 --- !u!58 &937644976459344305
 CircleCollider2D:
   m_ObjectHideFlags: 0

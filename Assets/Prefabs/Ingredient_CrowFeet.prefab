@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5788111054352523897, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: ingredientType
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6193807157784764701, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_Sprite

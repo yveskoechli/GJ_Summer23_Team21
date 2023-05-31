@@ -5,14 +5,25 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-
+    [SerializeField] private List<Sprite> ingredientSprites;
 
     [SerializeField] private IngredientType ingredientType;
-
-    [SerializeField] private bool prepared = false;
     
+    [SerializeField] private bool prepared = false;
+
+    private SpriteRenderer ingredientSprite;
+
+
+    private void OnValidate()
+    {
+        ingredientSprite = GetComponent<SpriteRenderer>();
+        ingredientSprite.sprite = ingredientSprites[(int)ingredientType];
+    }
+
     private void Awake()
     {
+        //ingredientSprite = GetComponent<SpriteRenderer>();
+        //ingredientSprite.sprite = ingredientSprites[(int)ingredientType];
     }
 
     public void Collected()

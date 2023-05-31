@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
         if (velocity.y >= 8) // Up
         {
             spritePlayer.flipX = false;
-            carryIngredientSprite.transform.localPosition = new Vector3(0f, 1.5f, 0f);
+            carryIngredientSprite.transform.localPosition = new Vector3(0f, 2.5f, 0f);
             return;
         }
 
