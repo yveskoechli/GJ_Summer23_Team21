@@ -47,10 +47,8 @@ public class PlayerController : MonoBehaviour
     private bool canInteractKettle = false;
     
 
-
     private bool IsCarryingPotion => carryedItem is Potion;
     private bool IsCarryingIngredient => carryedItem is Ingredient;
-
     private bool IsCarryingNull => carryedItem == null;
 
 
