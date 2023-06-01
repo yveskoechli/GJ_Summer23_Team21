@@ -18,8 +18,12 @@ public class OrderSpawner : MonoBehaviour
     private bool canStartNextOrder = false;
 
     [SerializeField] private int maxOrders = 10;
+    
+    [SerializeField] private float orderWaitTime = 10;
+    
     private int orderCount = 0;
     private int possibleOrdersAmount = 0;
+    private int maxOrdersAtOnce = 5;
     
     private void Awake()
     {
@@ -34,7 +38,7 @@ public class OrderSpawner : MonoBehaviour
     {
         if (canStartNextOrder)
         {
-            StartCoroutine(WaitForNextOrder(4f));
+            StartCoroutine(WaitForNextOrder(orderWaitTime));
             canStartNextOrder = false;
         }
         
@@ -49,7 +53,7 @@ public class OrderSpawner : MonoBehaviour
             Debug.Log("All Orders for this Level got in.");
             return;
         }
-        if (actualOrders.Count >=possibleOrdersAmount)
+        if (actualOrders.Count >=maxOrdersAtOnce)
         {
             //gameController.GameOver();
             canStartNextOrder = false;
@@ -65,7 +69,8 @@ public class OrderSpawner : MonoBehaviour
     public void CheckOrders(PotionType checkPotionType) // Check all open Orders for a match -> If multiple matches, take match with lowest remaining time.
     {
         
-        GameObject matchedOrder = actualOrders.FirstOrDefault(go => go.GetComponent<Order>().GetPotionType() == checkPotionType);
+        //GameObject matchedOrder = actualOrders.FirstOrDefault(go => go.GetComponent<Order>().GetPotionType() == checkPotionType);
+        GameObject matchedOrder = actualOrders.LastOrDefault(go => go.GetComponent<Order>().GetPotionType() == checkPotionType);
         if (matchedOrder != null)
         {
             Debug.Log("Potion Matched!");
