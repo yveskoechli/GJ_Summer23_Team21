@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -61,15 +62,24 @@ public class OrderSpawner : MonoBehaviour
         canStartNextOrder = true;
     }
 
-    public void CheckOrders() // Check all open Orders for a match -> If multiple matches, take match with lowest remaining time.
+    public void CheckOrders(PotionType checkPotionType) // Check all open Orders for a match -> If multiple matches, take match with lowest remaining time.
     {
         
+        GameObject matchedOrder = actualOrders.FirstOrDefault(go => go.GetComponent<Order>().GetPotionType() == checkPotionType);
+        if (matchedOrder != null)
+        {
+            Debug.Log("Potion Matched!");
+            gameController.AddProgressPoint();
+            RemoveFromOrderList(matchedOrder.GetComponent<Order>());
+        }
+       
     }
 
     public void RemoveFromOrderList(Order order)
     {
         actualOrders.Remove(order.gameObject);
-        StartCoroutine(WaitForCanStart(4f));
+       Destroy(order.gameObject);
+        //StartCoroutine(WaitForCanStart(4f));
     }
     
     

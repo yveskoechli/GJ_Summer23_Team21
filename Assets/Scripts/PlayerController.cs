@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private GameController gamecontroller;
     private KettleController kettle;
     private DeliveryController deliveryController;
+    private IngredientController ingredientController;
     
     private GameInput input;
     private InputAction moveAction;
@@ -43,10 +44,13 @@ public class PlayerController : MonoBehaviour
     private CircleCollider2D interactionArea;
 
     [SerializeField] private Ingredient actualIngredient;
+    private GameObject actualIngredientGameobject; // TESTING: To destroy this Gameobject when took from a Table
     [SerializeField] private Item carryedItem;
 
     private bool canInteractKettle = false;
     private bool canInteractDelivery = false;
+    private bool canInteractTable = false;
+    private Table actualTable;
     
 
     private bool IsCarryingPotion => carryedItem is Potion;
@@ -60,6 +64,7 @@ public class PlayerController : MonoBehaviour
         gamecontroller = FindObjectOfType<GameController>();
         kettle = FindObjectOfType<KettleController>();
         deliveryController = FindObjectOfType<DeliveryController>();
+        ingredientController = FindObjectOfType<IngredientController>();
         
         input = new GameInput();
         rbPlayer = GetComponent<Rigidbody2D>();
@@ -129,32 +134,20 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 moveInput)
     {
         rbPlayer.velocity = moveInput * moveSpeed;
-        
-        
-        //spritePlayer.flipX = moveInput.x < 0;
-        
-        /*
-        if (moveInput.x < 0)
-        {
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
-        
-        */
 
-        
-        
     }
     
     private void Collect(InputAction.CallbackContext _)
     {
+        if (!IsCarryingNull && canInteractTable)
+        {
+            PlaceItem();
+        }
+        
         if (IsCarryingPotion && canInteractDelivery)
         {
             deliveryController.DeliverOrder((Potion)carryedItem);
-            CarryItem(null, false);
+            ShowCarryItem(null, false);
             carryedItem = null;
             return;
         }
@@ -164,7 +157,7 @@ public class PlayerController : MonoBehaviour
             if (IsCarryingIngredient)
             {
                 kettle.AddToKettle((Ingredient)carryedItem);
-                CarryItem(null, false);
+                ShowCarryItem(null, false);
                 carryedItem = null;
                 
                 Debug.Log("Ingredient delivered!");
@@ -174,7 +167,7 @@ public class PlayerController : MonoBehaviour
                 carryedItem = kettle.GetBrewedPotion();
                 if (IsCarryingPotion)
                 {
-                    CarryItem(carryedItem, true);
+                    ShowCarryItem(carryedItem, true);
                 }
                 
             }
@@ -190,7 +183,14 @@ public class PlayerController : MonoBehaviour
         {
             //actualIngredient.Collected();
             carryedItem = actualIngredient;
-            CarryItem(carryedItem, true);
+            ShowCarryItem(carryedItem, true);
+
+            if (canInteractTable)
+            {
+                carryedItem = FindItemInScene(carryedItem);
+                actualTable.DeleteItem();
+                //Destroy(actualIngredientGameobject);
+            }
             
             Debug.Log("Ingredient collected!");
         }
@@ -198,10 +198,23 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("No Ingredient triggered");
         }
-        
+
+
 
     }
 
+    private Item FindItemInScene(Item item)
+    {
+        Item baseIngredient = null;
+        if (IsCarryingIngredient)
+        {
+            baseIngredient = ingredientController.GetBaseIngredient((Ingredient)item);
+            
+        }
+
+        return baseIngredient;
+    }
+    
     private void Interact(InputAction.CallbackContext _)
     {
         if (canInteractKettle)
@@ -234,7 +247,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
-    private void CarryItem(Item carriedItem, bool show)
+    private void ShowCarryItem(Item carriedItem, bool show)
     {
         carrySprite.enabled = show;
         if(show)
@@ -243,7 +256,14 @@ public class PlayerController : MonoBehaviour
             carrySprite.color = carriedItem.GetComponent<SpriteRenderer>().color;
         }
     }
-    
+
+    private void PlaceItem()
+    {
+        // TODO Remove Item from Player and Add Item as Child-Object to Table Item-Place
+        actualTable.PlaceItem(carryedItem);
+        ShowCarryItem(null, false);
+        carryedItem = null;
+    }
     
     #region Triggers
 
@@ -313,6 +333,7 @@ public class PlayerController : MonoBehaviour
        if (col.CompareTag("Ingredient"))
        {
             actualIngredient = col.GetComponent<Ingredient>();
+            //actualIngredientGameobject = col.gameObject;
             Debug.Log("Actual_Ingredient_Selected");
        }
 
@@ -326,6 +347,11 @@ public class PlayerController : MonoBehaviour
        {
            canInteractDelivery = true;
        }
+       if (col.CompareTag("Table"))
+       {
+           actualTable = col.GetComponent<Table>();
+           canInteractTable = true;
+       }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -333,6 +359,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Ingredient")&&actualIngredient == other.GetComponent<Ingredient>())
         {
             actualIngredient = null;
+            actualIngredientGameobject = null;
         }
         
         if (other.CompareTag("Kettle"))
@@ -343,6 +370,11 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("DeliveryController"))
         {
             canInteractDelivery = false;
+        }
+        if (other.CompareTag("Table"))
+        {
+            actualTable = null;
+            canInteractTable = false;
         }
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - Kettle
   - Potion
   - DeliveryController
+  - Table
   layers:
   - Default
   - TransparentFX

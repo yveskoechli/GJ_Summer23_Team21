@@ -16,8 +16,8 @@ public class KettleController : MonoBehaviour
     [SerializeField] private SpriteRenderer brewButtonImage;
     
     //FillBar
-    [SerializeField] private float timeToFulfill = 30f; // Check in Inspector! (not automatically set..)
-    [SerializeField] private float timeToStayGoodPotion = 8f; // Check in Inspector! (not automatically set..)
+    [SerializeField] private float timeToFulfill = 6f; // Check in Inspector! (not automatically set..)
+    [SerializeField] private float timeToStayGoodPotion = 4f; // Check in Inspector! (not automatically set..)
     
     [SerializeField] private Image fillAmountImage;
     [SerializeField] private Image checkmarkImageOK;
@@ -161,7 +161,12 @@ public class KettleController : MonoBehaviour
 
     private void EnableBrewStateUI(bool enable)
     {
+        if (!enable)
+        {
+            SetCheckMark(0);
+        }
         fillAmountUI.SetActive(enable);
+
     }
     
 
@@ -192,6 +197,7 @@ public class KettleController : MonoBehaviour
         {
             Debug.Log("Wrong Combination"); //TODO Trigger Wrong Combination Event
             //TODO Turn Ingredients to black -> That Player needs to Clear Kettle first before adding new Ingr.
+            isBrewing = false;
             return;
         }
         else
@@ -213,6 +219,7 @@ public class KettleController : MonoBehaviour
         if (isPotionReady)
         {
             Potion potion = brewedPotion;
+            animator.SetBool(IsCooking, false);
             ClearKettle();
             EnableBrewStateUI(false);
             return potion;
@@ -225,13 +232,14 @@ public class KettleController : MonoBehaviour
         isBrewing = false;
         isPotionReady = false;
         brewedPotion = null;
-        ingredients.Clear();
         ClearIngredients();
+        timeLeft = timeToFulfill;
         Debug.Log("Kettle cleared!");
     }
 
     private void ClearIngredients()
     {
+        ingredients.Clear();
         foreach (var ingredientSprite in ingredientsSprites)
         {
             ingredientSprite.sprite = null;

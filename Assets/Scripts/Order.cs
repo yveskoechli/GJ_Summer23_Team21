@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Order : MonoBehaviour
 {
 
+    [SerializeField] private PotionType potionType;         // For DeliverController to simple compare the PotionTypes.
+    
     [SerializeField] private Potion potion;
     
     [SerializeField] private List<IngredientType> neededIngredients;
@@ -14,7 +16,9 @@ public class Order : MonoBehaviour
     [SerializeField] private float timeToFulfill = 10f; // Check in Inspector! (not automatically set..)
 
     [SerializeField] private Image fillAmountImage;
-
+    
+    
+    
     private OrderSpawner orderSpawner;
     
     private float timeLeft = 0;
@@ -59,8 +63,11 @@ public class Order : MonoBehaviour
         }
         
     }
-    
-    
+
+    public PotionType GetPotionType()
+    {
+        return potionType;
+    }
     
     public bool CheckIngredients(List<IngredientType> checkIngredients)
     {

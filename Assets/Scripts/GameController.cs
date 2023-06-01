@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
             progressPoints = 10;
         }
         milestoneController.SetMileStoneProgress(progressPoints);
+        Debug.Log("GameController: Added ProgressPoint");
     }
 
     public void RemoveProgressPoint()
