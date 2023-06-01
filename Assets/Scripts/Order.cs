@@ -1,8 +1,7 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Order : MonoBehaviour
@@ -12,7 +11,7 @@ public class Order : MonoBehaviour
     
     [SerializeField] private List<IngredientType> neededIngredients;
 
-    [SerializeField] private float timeToFulfill = 4f;
+    [SerializeField] private float timeToFulfill = 10f; // Check in Inspector! (not automatically set..)
 
     [SerializeField] private Image fillAmountImage;
 
@@ -22,12 +21,14 @@ public class Order : MonoBehaviour
 
     private bool canCountDown = true;
 
+    private GameController gameController;
     
 
     private void Awake()
     {
         timeLeft = timeToFulfill;
         orderSpawner = FindObjectOfType<OrderSpawner>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     private void Update()
@@ -49,8 +50,9 @@ public class Order : MonoBehaviour
         
         if (timeLeft <= 0)
         {
-            Debug.Log("You was to slow...");
+            Debug.Log("You was to slow for the Order!");
             canCountDown = false;
+            gameController.RemoveProgressPoint();
             orderSpawner.RemoveFromOrderList(this);
             Destroy(this.gameObject, 0.1f);
             //StartCoroutine(DestroyDelayed(0f));

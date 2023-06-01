@@ -16,12 +16,20 @@ public class KettleController : MonoBehaviour
     [SerializeField] private SpriteRenderer brewButtonImage;
     
     //FillBar
-    [SerializeField] private float timeToFulfill = 10f;
-    [SerializeField] private float timeToStayGoodPotion = 4f;
+    [SerializeField] private float timeToFulfill = 30f; // Check in Inspector! (not automatically set..)
+    [SerializeField] private float timeToStayGoodPotion = 8f; // Check in Inspector! (not automatically set..)
     
     [SerializeField] private Image fillAmountImage;
+    [SerializeField] private Image checkmarkImageOK;
+    [SerializeField] private Image checkmarkImageWarning;
+    [SerializeField] private Image checkmarkImageNOK;
+    [SerializeField] private GameObject fillAmountUI;
+    
+    
     private float timeLeft = 0;
     private bool canCountDown = true;
+
+    
     
     private OrderSpawner orderSpawner;
     private CombinationManager combinationManager;
@@ -35,19 +43,27 @@ public class KettleController : MonoBehaviour
     [SerializeField] private Potion brewedPotion; // Serialize Field only for Debug to see in Inspector
 
     private bool isBrewing;
+    private bool isPotionReady;
 
+    private float CheckmarkOKTime = 2f;
+    
     private void Awake()
     {
         ingredients = new List<Ingredient>();
 
-        timeLeft = timeToFulfill + timeToStayGoodPotion;
+        //timeLeft = timeToFulfill + timeToStayGoodPotion;
+        timeLeft = timeToFulfill;
         isBrewing = false;
+        isPotionReady = false;
+        canCountDown = false;
+        SetCheckMark(0);
         
         orderSpawner = FindObjectOfType<OrderSpawner>();
         combinationManager = FindObjectOfType<CombinationManager>();
         animator = GetComponent<Animator>();
         
         ShowBrewButton(false);
+        EnableBrewStateUI(false);
 
         ClearKettle();
     }
@@ -57,44 +73,95 @@ public class KettleController : MonoBehaviour
         if (isBrewing)
         {
             //CheckBrewState();
-            CountDown();
+            if (canCountDown)
+            {
+                CountDown();
+            }
         }
     }
 
     private void CountDown()
     {
         timeLeft -= Time.deltaTime;
-        float fillAmountNormalized = 1 - (1 / (timeToFulfill) * timeLeft);
-        fillAmountImage.fillAmount = fillAmountNormalized;
-        //fillAmountImage.color = Color.Lerp(Color.green, Color.red, fillAmountNormalized);
-        
-        if (timeLeft <= 0)
+        if (timeLeft > 0)
         {
+            CheckmarkOKTime = 2f;
+            float fillAmountNormalized = 1 - (1 / (timeToFulfill) * (timeLeft));
+            if (fillAmountNormalized >= 1) { fillAmountNormalized = 1;}
+        
+            fillAmountImage.fillAmount = fillAmountNormalized;
+            return;
+        }
+        
+        if (timeLeft <= 0-timeToStayGoodPotion)
+        {
+            SetCheckMark(3);
             Debug.Log("You was to slow...");
             canCountDown = false;
+            isPotionReady = false;
+            brewedPotion = null;
             //orderSpawner.RemoveFromOrderList(this);
             //Destroy(this.gameObject, 0.1f);
             //StartCoroutine(DestroyDelayed(0f));
         }
+        else
+        {
+            isPotionReady = true;
+            CheckmarkOKTime -= Time.deltaTime;
+            if (CheckmarkOKTime>0f)
+            {
+                SetCheckMark(1);
+            }
+            else
+            {
+                SetCheckMark(2);
+            }
+            float timeToStayGoodNormalized = (1 / (timeToStayGoodPotion) * -timeLeft);
+            fillAmountImage.color = Color.Lerp(Color.green, Color.red, timeToStayGoodNormalized);
+        }
 
-        //if (timeLeft <= )
-        //{
-            
-        //}
-        
     }
 
+    private void SetCheckMark(int brewState)
+    {
+        switch (brewState)
+        {
+            case 0:
+                checkmarkImageOK.enabled = false;
+                checkmarkImageWarning.enabled = false;
+                checkmarkImageNOK.enabled = false;
+                break;
+            case 1:
+                checkmarkImageOK.enabled = true;
+                checkmarkImageWarning.enabled = false;
+                checkmarkImageNOK.enabled = false;
+                break;
+            case 2:
+                checkmarkImageOK.enabled = false;
+                checkmarkImageWarning.enabled = true;
+                checkmarkImageNOK.enabled = false;
+                break;
+            case 3:
+                checkmarkImageOK.enabled = false;
+                checkmarkImageWarning.enabled = false;
+                checkmarkImageNOK.enabled = true;
+                break;
+            
+        }
+    }
+    
     private void CheckBrewState()
     {
-        if (timeLeft < 0)
+        if (isPotionReady)
         {
             
         }
-        if (brewedPotion != null)
-        {
-            isBrewing = false;
-        }
 
+    }
+
+    private void EnableBrewStateUI(bool enable)
+    {
+        fillAmountUI.SetActive(enable);
     }
     
 
@@ -115,7 +182,7 @@ public class KettleController : MonoBehaviour
     }
 
 
-    public void BrewPotion()
+    public void BrewPotion()    // If all Ingredients ar in Kettle -> Start Brewing and Check for possible combination.
     {
         if (isBrewing) { return; }
         isBrewing = true;
@@ -128,7 +195,10 @@ public class KettleController : MonoBehaviour
             return;
         }
         else
-        {
+        {       // TODO Maybe put this in a own Function like "ActivateKettle" (then also "DeactivateKettle" needed)
+            EnableBrewStateUI(true);
+            canCountDown = true;
+            isPotionReady = false;
             brewedPotion = potion;
             animator.SetBool(IsCooking, true);
             //ClearKettle();
@@ -140,13 +210,21 @@ public class KettleController : MonoBehaviour
     
     public Potion GetBrewedPotion()     // Brewed Potion can be "Wrong Potion" -> Implement Check in Playercontroller
     {
-        Potion potion = brewedPotion;
-        brewedPotion = null;
-        return potion;
+        if (isPotionReady)
+        {
+            Potion potion = brewedPotion;
+            ClearKettle();
+            EnableBrewStateUI(false);
+            return potion;
+        }
+        return null;
     }
     
     public void ClearKettle()
     {
+        isBrewing = false;
+        isPotionReady = false;
+        brewedPotion = null;
         ingredients.Clear();
         ClearIngredients();
         Debug.Log("Kettle cleared!");
@@ -171,7 +249,7 @@ public class KettleController : MonoBehaviour
 
     #endregion
 
-    private IEnumerator WaitForCanStart(float time)
+    private IEnumerator SetCheckMarkWarning(float time)
     {
         yield return new WaitForSeconds(time);
         

@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6853896cd19815345afccd99ced264fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6bb5e0eb4d38f5347bb2f14a6e2633a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potion: {fileID: 3302542657911078749, guid: ad31f589079fee74fad3bdf1217aac35, type: 3}
   neededIngredients: 
-  timeToFulfill: 12
+  timeToFulfill: 30
   fillAmountImage: {fileID: 1674043876527354486}
 --- !u!225 &7371167344015196544
 CanvasGroup:

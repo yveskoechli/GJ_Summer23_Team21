@@ -10,7 +10,6 @@ public class OrderSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> orderPrefabs;
 
-    
     [SerializeField] private List<GameObject> actualOrders = new List<GameObject>(); // Just SerializeField to view in Inspector for Debugging
 
     private GameController gameController;
@@ -19,11 +18,15 @@ public class OrderSpawner : MonoBehaviour
 
     [SerializeField] private int maxOrders = 10;
     private int orderCount = 0;
+    private int possibleOrdersAmount = 0;
     
     private void Awake()
     {
-        canStartNextOrder = true;
+        canStartNextOrder = false;
         gameController = FindObjectOfType<GameController>();
+        possibleOrdersAmount = orderPrefabs.Count;
+        
+        StartCoroutine(WaitForNextOrder(1f));
     }
 
     private void Update()
@@ -45,7 +48,7 @@ public class OrderSpawner : MonoBehaviour
             Debug.Log("All Orders for this Level got in.");
             return;
         }
-        if (actualOrders.Count >=5)
+        if (actualOrders.Count >=possibleOrdersAmount)
         {
             //gameController.GameOver();
             canStartNextOrder = false;
@@ -73,7 +76,7 @@ public class OrderSpawner : MonoBehaviour
     private IEnumerator WaitForNextOrder(float time)
     {
         yield return new WaitForSeconds(time);
-        InstantiateOrder(5);  // Range for more difficulty and variety in higher levels -> TODO Take Global Value for range from GameController
+        InstantiateOrder(possibleOrdersAmount);  // Range for more difficulty and variety in higher levels -> TODO Take Global Value for range from GameController
     }
 
     private IEnumerator WaitForCanStart(float time)

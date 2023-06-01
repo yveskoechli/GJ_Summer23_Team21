@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private GameController gamecontroller;
     private KettleController kettle;
+    private DeliveryController deliveryController;
     
     private GameInput input;
     private InputAction moveAction;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Item carryedItem;
 
     private bool canInteractKettle = false;
+    private bool canInteractDelivery = false;
     
 
     private bool IsCarryingPotion => carryedItem is Potion;
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         gamecontroller = FindObjectOfType<GameController>();
         kettle = FindObjectOfType<KettleController>();
+        deliveryController = FindObjectOfType<DeliveryController>();
         
         input = new GameInput();
         rbPlayer = GetComponent<Rigidbody2D>();
@@ -148,6 +151,14 @@ public class PlayerController : MonoBehaviour
     
     private void Collect(InputAction.CallbackContext _)
     {
+        if (IsCarryingPotion && canInteractDelivery)
+        {
+            deliveryController.DeliverOrder((Potion)carryedItem);
+            CarryItem(null, false);
+            carryedItem = null;
+            return;
+        }
+        
         if (canInteractKettle)      // If in Interaction Area from Kettle
         {
             if (IsCarryingIngredient)
@@ -310,6 +321,11 @@ public class PlayerController : MonoBehaviour
            canInteractKettle = true;
            kettle.ShowBrewButton(true);
        }
+       
+       if (col.CompareTag("DeliveryController"))
+       {
+           canInteractDelivery = true;
+       }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -323,6 +339,10 @@ public class PlayerController : MonoBehaviour
         {
             canInteractKettle = false;
             kettle.ShowBrewButton(false);
+        }
+        if (other.CompareTag("DeliveryController"))
+        {
+            canInteractDelivery = false;
         }
     }
 
