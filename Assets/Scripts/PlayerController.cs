@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     private static readonly int HorizontalSpeed = Animator.StringToHash("horizontalSpeed");
     private static readonly int VerticalSpeed = Animator.StringToHash("verticalSpeed");
+    private static readonly int LookDirection = Animator.StringToHash("lookDirection");
+    private static readonly int IsCarrying = Animator.StringToHash("isCarrying");
     
     #region Inspector
 
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
     
     private Vector2 moveInput;
 
+    
+    // Animations:
     private Animator animator;
     
     private CircleCollider2D interactionArea;
@@ -41,6 +45,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Item carryedItem;
 
     private bool canInteractKettle = false;
+    
+
 
     private bool IsCarryingPotion => carryedItem is Potion;
     private bool IsCarryingIngredient => carryedItem is Ingredient;
@@ -68,6 +74,8 @@ public class PlayerController : MonoBehaviour
         
         input.Player.Collect.performed += Collect;
         input.Player.Interact.performed += Interact;
+        input.Player.ClearKettle.performed += ClearKettle;
+        
     }
     
     private void OnEnable()
@@ -93,6 +101,7 @@ public class PlayerController : MonoBehaviour
         //Unsubscribe from input events
         input.Player.Collect.performed -= Collect;
         input.Player.Interact.performed -= Interact;
+        input.Player.ClearKettle.performed -= ClearKettle;
         
     }
 
@@ -204,7 +213,15 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    
+
+    private void ClearKettle(InputAction.CallbackContext _)
+    {
+        if (canInteractKettle)
+        {
+            kettle.ClearKettle();
+        }
+    }
+
     #endregion
 
 
@@ -242,7 +259,9 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat(HorizontalSpeed, velocity.x);
         animator.SetFloat(VerticalSpeed, velocity.y);
         
-        Debug.Log("Veloctiy x: " + velocity.x + " Velocity y: " + velocity.y);
+        animator.SetBool(IsCarrying, !IsCarryingNull);
+        
+        //Debug.Log("Veloctiy x: " + velocity.x + " Velocity y: " + velocity.y);
         
         if (velocity.x == 0 && velocity.y == 0) { return; }
 
@@ -251,6 +270,7 @@ public class PlayerController : MonoBehaviour
             spritePlayer.flipX = true;
             carrySprite.transform.localPosition = new Vector3(0f, 0f, 0f);
             carrySprite.sortingOrder = 11;
+            animator.SetFloat(LookDirection, 0f);
             return;
         }
 
@@ -260,6 +280,7 @@ public class PlayerController : MonoBehaviour
         {
             spritePlayer.flipX = false;
             carrySprite.transform.localPosition = new Vector3(0f, 2.5f, 0f);
+            animator.SetFloat(LookDirection, 0.5f);
             return;
         }
 
@@ -267,10 +288,13 @@ public class PlayerController : MonoBehaviour
         {   
             spritePlayer.flipX = true;
             carrySprite.transform.localPosition = new Vector3(-1.18f, 0.682f, 0f);
+            animator.SetFloat(LookDirection, 1f);
             return;
         }
+        // Right
         spritePlayer.flipX = false;
         carrySprite.transform.localPosition = new Vector3(1.18f, 0.682f, 0f);
+        animator.SetFloat(LookDirection, 1f);
     }
 
     #endregion

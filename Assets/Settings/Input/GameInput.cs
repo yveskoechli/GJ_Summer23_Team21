@@ -62,6 +62,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClearKettle"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2e34834-e6b4-40cf-bb3e-3a10f1e9325d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +280,28 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b8c31bd-7a3d-4b4c-b0e9-fe3ea95f5075"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ClearKettle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c33f457-e47f-4314-92dc-6f0e6207bd8f"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClearKettle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -862,6 +893,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Collect = m_Player.FindAction("Collect", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ClearKettle = m_Player.FindAction("ClearKettle", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -939,6 +971,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Collect;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ClearKettle;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -947,6 +980,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Collect => m_Wrapper.m_Player_Collect;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ClearKettle => m_Wrapper.m_Player_ClearKettle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -968,6 +1002,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ClearKettle.started += instance.OnClearKettle;
+            @ClearKettle.performed += instance.OnClearKettle;
+            @ClearKettle.canceled += instance.OnClearKettle;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -984,6 +1021,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ClearKettle.started -= instance.OnClearKettle;
+            @ClearKettle.performed -= instance.OnClearKettle;
+            @ClearKettle.canceled -= instance.OnClearKettle;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1170,6 +1210,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnCollect(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnClearKettle(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

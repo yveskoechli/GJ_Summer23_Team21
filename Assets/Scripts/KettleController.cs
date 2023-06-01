@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KettleController : MonoBehaviour
 {
+    private static readonly int IsCooking = Animator.StringToHash("isCooking");
 
     [SerializeField] private List<SpriteRenderer> ingredientsSprites;
 
@@ -14,10 +15,13 @@ public class KettleController : MonoBehaviour
     private OrderSpawner orderSpawner;
     private CombinationManager combinationManager;
     
+    //Animations
+    private Animator animator;
+    
     private int maxListLength = 3;
 
     [SerializeField] private Potion brewedPotion; // Serialize Field only for Debug to see in Inspector
-    //[SerializeField] private List<IngredientType> ingredientTypes; // Serialize Field only for Debug to see in Inspector
+    
 
     private void Awake()
     {
@@ -25,9 +29,11 @@ public class KettleController : MonoBehaviour
 
         orderSpawner = FindObjectOfType<OrderSpawner>();
         combinationManager = FindObjectOfType<CombinationManager>();
+        animator = GetComponent<Animator>();
         
         ShowBrewButton(false);
 
+        ClearKettle();
     }
 
 
@@ -60,7 +66,8 @@ public class KettleController : MonoBehaviour
         else
         {
             brewedPotion = potion;
-            ClearKettle();
+            animator.SetBool(IsCooking, true);
+            //ClearKettle();
         }
         //orderSpawner.CheckOrders(); //TODO needs to be checked in Delivery-Area
 
@@ -76,9 +83,17 @@ public class KettleController : MonoBehaviour
     public void ClearKettle()
     {
         ingredients.Clear();
+        ClearIngredients();
         Debug.Log("Kettle cleared!");
     }
 
+    private void ClearIngredients()
+    {
+        foreach (var ingredientSprite in ingredientsSprites)
+        {
+            ingredientSprite.sprite = null;
+        }
+    }
 
     #region UI Elements
 
