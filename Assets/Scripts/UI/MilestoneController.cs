@@ -29,7 +29,10 @@ public class MilestoneController : MonoBehaviour
     private void UpdateProgress()
     {
         var fillAmountNormalized = (1f / 10f) * milestoneProgress;
-        fillAmountNormalized -= 0.05f;
+        if (fillAmountNormalized<=0.5)      //TODO Polish Progressbar in relation to MilestoneMeterPoints
+        {
+            fillAmountNormalized -= 0.05f;
+        }
         milestoneFillImage.fillAmount = fillAmountNormalized;
         Debug.Log("Milestoneprogress: " + milestoneProgress);
         Debug.Log("fillAmountNormalized: " + fillAmountNormalized);
