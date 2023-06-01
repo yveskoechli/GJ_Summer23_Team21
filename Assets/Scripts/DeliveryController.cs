@@ -19,6 +19,7 @@ public class DeliveryController : MonoBehaviour
     {
         Debug.Log("Potion delivered");
         // TODO Check Potion with open Orders -> Check in OrderSpawner
-        gameController.AddProgressPoint();
+        orderSpawner.CheckOrders(potion.GetPotionType());
+        //gameController.AddProgressPoint();
     }
 }

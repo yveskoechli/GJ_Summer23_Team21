@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 681aec2d507ec9345a2204ca844b9fe1
+guid: 9bdf532d52e02944696b07be050ed9c4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -115,112 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: TEX_Kettle_Cook_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 54
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 351d1cafeba367a49ac8b598c586438c
-      internalID: 2135658392
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TEX_Kettle_Cook_1
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 0
-        width: 54
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 164d8d879bb45764bbfb587d42a1b47a
-      internalID: 311434352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TEX_Kettle_Cook_2
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 0
-        width: 54
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 808085ab5c954444f9e175ccebd1fba6
-      internalID: -541666472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TEX_Kettle_Cook_3
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 0
-        width: 54
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd74fe2e953bb0946801c2fceb4cd94e
-      internalID: -1568842097
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TEX_Kettle_Cook_4
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 0
-        width: 54
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a964a45b987313249bab747d77ee2b76
-      internalID: 1578301627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -231,12 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      TEX_Kettle_Cook_0: 2135658392
-      TEX_Kettle_Cook_1: 311434352
-      TEX_Kettle_Cook_2: -541666472
-      TEX_Kettle_Cook_3: -1568842097
-      TEX_Kettle_Cook_4: 1578301627
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

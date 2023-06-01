@@ -1,6 +1,6 @@
 
-using System;
 using UnityEngine;
+
 using UnityEngine.UI;
 
 public class MilestoneController : MonoBehaviour
@@ -28,9 +28,11 @@ public class MilestoneController : MonoBehaviour
 
     private void UpdateProgress()
     {
-        float fillAmountNormalized = 1 / 10 * milestoneProgress;
-        //fillAmountNormalized += 0.1f;
+        var fillAmountNormalized = (1f / 10f) * milestoneProgress;
+        fillAmountNormalized -= 0.05f;
         milestoneFillImage.fillAmount = fillAmountNormalized;
+        Debug.Log("Milestoneprogress: " + milestoneProgress);
+        Debug.Log("fillAmountNormalized: " + fillAmountNormalized);
         SetEmote(milestoneProgress);
     }
     
@@ -65,5 +67,6 @@ public class MilestoneController : MonoBehaviour
     {
         milestoneProgress = progress;
         UpdateProgress();
+        Debug.Log("MilestoneController: SetMilestoneProgress");
     }
 }
