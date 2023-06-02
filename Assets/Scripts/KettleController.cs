@@ -11,6 +11,8 @@ public class KettleController : MonoBehaviour
 
     [SerializeField] private List<SpriteRenderer> ingredientsSprites;
 
+    [SerializeField] private SpriteRenderer selectSprite;
+    
     [SerializeField] private List<Ingredient> ingredients;
 
     //[SerializeField] private SpriteRenderer brewButtonImage;
@@ -263,6 +265,24 @@ public class KettleController : MonoBehaviour
 
     #endregion
 
+    
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if ( col.CompareTag("Player"))
+        {
+            selectSprite.enabled = true;
+            
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if ( other.CompareTag("Player"))
+        {
+            selectSprite.enabled = false;
+            
+        }
+    }
     private IEnumerator SetCheckMarkWarning(float time)
     {
         yield return new WaitForSeconds(time);

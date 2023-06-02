@@ -141,6 +141,11 @@ public class PlayerController : MonoBehaviour
     
     private void Collect(InputAction.CallbackContext _)
     {
+        if (canInteractPrepare && IsCarryingIngredient)
+        {
+            actualPrepare.PrepareIngredient((Ingredient)carryedItem);
+        }
+        
         if (!IsCarryingNull && canInteractTable)
         {
             if (actualTable.IsEmpty())
@@ -224,10 +229,7 @@ public class PlayerController : MonoBehaviour
     
     private void Interact(InputAction.CallbackContext _)
     {
-        if (canInteractPrepare && IsCarryingIngredient)
-        {
-            actualPrepare.PrepareIngredient((Ingredient)carryedItem);
-        }
+        
         
         if (canInteractKettle)
         {
