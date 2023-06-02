@@ -174,6 +174,10 @@ public class KettleController : MonoBehaviour
 
     public void AddToKettle(Ingredient ingredient)
     {
+        if (isBrewing)
+        {
+            return;
+        }
         Debug.Log("KettleAddTriggered");
         int listLength = ingredients.Count;
         if (listLength >= maxListLength)
@@ -214,7 +218,11 @@ public class KettleController : MonoBehaviour
         //orderSpawner.CheckOrders(); //TODO needs to be checked in Delivery-Area
 
     }
-    
+
+    public bool IsBrewing()
+    {
+        return isBrewing;
+    }
     
     public Potion GetBrewedPotion()     // Brewed Potion can be "Wrong Potion" -> Implement Check in Playercontroller
     {

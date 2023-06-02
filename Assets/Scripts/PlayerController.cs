@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
         
         if (canInteractKettle)      // If in Interaction Area from Kettle
         {
-            if (IsCarryingIngredient)
+            if (IsCarryingIngredient  && !kettle.IsBrewing())
             {
                 kettle.AddToKettle((Ingredient)carryedItem);
                 ShowCarryItem(null, false);

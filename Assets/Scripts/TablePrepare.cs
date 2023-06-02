@@ -14,6 +14,8 @@ public class TablePrepare : MonoBehaviour
     [SerializeField] private GameObject fillAmountUI;
 
     [SerializeField] private PrepareType prepareType;
+
+    [SerializeField] private Animator animator;
     
     private Item itemTemporary;
 
@@ -25,6 +27,7 @@ public class TablePrepare : MonoBehaviour
     private float timeLeft = 0;
 
     private Ingredient newIngredient;
+    private static readonly int IsPreparing = Animator.StringToHash("isPreparing");
 
     private void Awake()
     {
@@ -62,6 +65,7 @@ public class TablePrepare : MonoBehaviour
         else
         {
             isPreparing = false;
+            animator.SetBool(IsPreparing, false);
             player.EnableInput();
             EnableBrewStateUI(false);
             player.ChangeIngredient(GiveBackNewIngredient(newIngredient));
@@ -85,6 +89,7 @@ public class TablePrepare : MonoBehaviour
                 isPreparing = true;
                 EnableBrewStateUI(true);
                 newIngredient = ingredient;
+                animator.SetBool(IsPreparing, true); // Make is Preparing Crow Feet or Herb
                 //player.ChangeIngredient(GiveBackNewIngredient(ingredient));
             }
         }
@@ -94,6 +99,7 @@ public class TablePrepare : MonoBehaviour
             isPreparing = true;
             EnableBrewStateUI(true);
             newIngredient = ingredient;
+            animator.SetBool(IsPreparing, true);
             
         }
         else
