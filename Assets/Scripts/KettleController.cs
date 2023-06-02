@@ -39,6 +39,7 @@ public class KettleController : MonoBehaviour
     
     //Animations
     private Animator animator;
+    [SerializeField] private Animator smokeAnimator;
     
     private int maxListLength = 3;
 
@@ -100,6 +101,7 @@ public class KettleController : MonoBehaviour
         {
             SetCheckMark(3);
             Debug.Log("You was to slow...");
+            OverCooked();
             canCountDown = false;
             isPotionReady = false;
             brewedPotion = null;
@@ -192,6 +194,12 @@ public class KettleController : MonoBehaviour
         Debug.Log(ingredient.name + "added to Kettle");
     }
 
+    public bool IsKettleFull()
+    {
+        int listLength = ingredients.Count;
+        return listLength >= maxListLength;
+        
+    }
 
     public void BrewPotion()    // If all Ingredients ar in Kettle -> Start Brewing and Check for possible combination.
     {
@@ -202,6 +210,7 @@ public class KettleController : MonoBehaviour
         if (potion == null)
         {
             Debug.Log("Wrong Combination"); //TODO Trigger Wrong Combination Event
+            OverCooked();
             //TODO Turn Ingredients to black -> That Player needs to Clear Kettle first before adding new Ingr.
             isBrewing = false;
             return;
@@ -245,6 +254,8 @@ public class KettleController : MonoBehaviour
         ClearIngredients();
         timeLeft = timeToFulfill;
         EnableBrewStateUI(false);
+        ColorIngredientSprites(false);
+        animator.SetBool(IsCooking, false);
         Debug.Log("Kettle cleared!");
     }
 
@@ -254,6 +265,30 @@ public class KettleController : MonoBehaviour
         foreach (var ingredientSprite in ingredientsSprites)
         {
             ingredientSprite.sprite = null;
+        }
+    }
+
+    private void OverCooked()
+    {
+        ColorIngredientSprites(true);
+        smokeAnimator.SetTrigger("overcooked");
+    }
+
+    private void ColorIngredientSprites(bool overcooked)
+    {
+        if (overcooked)
+        {
+            foreach (var ingredientsSprite in ingredientsSprites)
+            {
+                ingredientsSprite.color = Color.gray;
+            }
+        }
+        else
+        {
+            foreach (var ingredientsSprite in ingredientsSprites)
+            {
+                ingredientsSprite.color = Color.white;
+            }
         }
     }
 
