@@ -163,7 +163,7 @@ public class MenuController : MonoBehaviour
             optionsBG.SetActive(false);
         }
         
-        backSound.Play();
+        //backSound.Play();
     }
 
     private void ToggleMenu(InputAction.CallbackContext _)
