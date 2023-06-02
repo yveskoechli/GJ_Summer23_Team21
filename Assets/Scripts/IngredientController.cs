@@ -27,4 +27,20 @@ public class IngredientController : MonoBehaviour
         return null;
     }
 
+    
+    public Ingredient GetBaseIngredient(IngredientType playerIngredientType)    // To give back Ingredient with IngredientType input..
+    {
+        Ingredient baseIngredient;
+
+        foreach (Ingredient ingredient in baseIngredients)
+        {
+            if (playerIngredientType == ingredient.GetIngredientType())
+            {
+                return ingredient;
+            }
+            
+        }
+
+        return null;
+    }
 }

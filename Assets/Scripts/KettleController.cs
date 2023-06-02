@@ -13,7 +13,7 @@ public class KettleController : MonoBehaviour
 
     [SerializeField] private List<Ingredient> ingredients;
 
-    [SerializeField] private SpriteRenderer brewButtonImage;
+    //[SerializeField] private SpriteRenderer brewButtonImage;
     
     //FillBar
     [SerializeField] private float timeToFulfill = 6f; // Check in Inspector! (not automatically set..)
@@ -33,7 +33,7 @@ public class KettleController : MonoBehaviour
     
     private OrderSpawner orderSpawner;
     private CombinationManager combinationManager;
-    
+    private TextUIController textUIController;
     
     //Animations
     private Animator animator;
@@ -61,8 +61,9 @@ public class KettleController : MonoBehaviour
         orderSpawner = FindObjectOfType<OrderSpawner>();
         combinationManager = FindObjectOfType<CombinationManager>();
         animator = GetComponent<Animator>();
+        textUIController = FindObjectOfType<TextUIController>();
         
-        ShowBrewButton(false);
+        ShowTutorialText(false);
         EnableBrewStateUI(false);
 
         ClearKettle();
@@ -100,9 +101,8 @@ public class KettleController : MonoBehaviour
             canCountDown = false;
             isPotionReady = false;
             brewedPotion = null;
-            //orderSpawner.RemoveFromOrderList(this);
-            //Destroy(this.gameObject, 0.1f);
-            //StartCoroutine(DestroyDelayed(0f));
+            animator.SetBool(IsCooking, false);
+            
         }
         else
         {
@@ -234,6 +234,7 @@ public class KettleController : MonoBehaviour
         brewedPotion = null;
         ClearIngredients();
         timeLeft = timeToFulfill;
+        EnableBrewStateUI(false);
         Debug.Log("Kettle cleared!");
     }
 
@@ -248,11 +249,16 @@ public class KettleController : MonoBehaviour
 
     #region UI Elements
 
-    public void ShowBrewButton(bool show)
+    public void ShowTutorialText(bool show)
     {
-        var color = brewButtonImage.color;
-        color.a = show ? 1 : 0;
-        brewButtonImage.color = color;
+        if (show)
+        {
+            textUIController.ChangeTutorialText(0);
+        }
+        else
+        {
+            textUIController.HideTutorialText();
+        }
     }
 
     #endregion

@@ -9,6 +9,7 @@ TagManager:
   - Potion
   - DeliveryController
   - Table
+  - Prepare
   layers:
   - Default
   - TransparentFX
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: Midground
     uniqueID: 2209049023
+    locked: 0
+  - name: Player
+    uniqueID: 2944565
     locked: 0
   - name: Foreground
     uniqueID: 4202390141

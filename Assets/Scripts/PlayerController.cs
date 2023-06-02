@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour
     private bool canInteractKettle = false;
     private bool canInteractDelivery = false;
     private bool canInteractTable = false;
+    private bool canInteractPrepare = false;
     private Table actualTable;
+    private TablePrepare actualPrepare;
     
 
     private bool IsCarryingPotion => carryedItem is Potion;
@@ -141,7 +143,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!IsCarryingNull && canInteractTable)
         {
-            PlaceItem();
+            if (actualTable.IsEmpty())
+            {
+                PlaceItem();
+            }
+            
         }
         
         if (IsCarryingPotion && canInteractDelivery)
@@ -181,8 +187,9 @@ public class PlayerController : MonoBehaviour
         
         if (actualIngredient != null)
         {
-            //actualIngredient.Collected();
-            carryedItem = actualIngredient;
+            
+            //carryedItem = actualIngredient;
+            carryedItem = ingredientController.GetBaseIngredient(actualIngredient);
             ShowCarryItem(carryedItem, true);
 
             if (canInteractTable)
@@ -217,6 +224,11 @@ public class PlayerController : MonoBehaviour
     
     private void Interact(InputAction.CallbackContext _)
     {
+        if (canInteractPrepare && IsCarryingIngredient)
+        {
+            actualPrepare.PrepareIngredient((Ingredient)carryedItem);
+        }
+        
         if (canInteractKettle)
         {
             Debug.Log("Started Brewing");
@@ -253,7 +265,7 @@ public class PlayerController : MonoBehaviour
         if(show)
         {
             carrySprite.sprite = carriedItem.GetComponent<SpriteRenderer>().sprite;
-            carrySprite.color = carriedItem.GetComponent<SpriteRenderer>().color;
+            carrySprite.color = carriedItem.GetComponent<SpriteRenderer>().color; // Maybe not needed (Was just for Testing with Colors??)
         }
     }
 
@@ -264,21 +276,25 @@ public class PlayerController : MonoBehaviour
         ShowCarryItem(null, false);
         carryedItem = null;
     }
-    
-    #region Triggers
 
-    private void OnTriggerEnter(Collider other)
+    #region Public Functions
+
+    public void ChangeIngredient(IngredientType newIngredientType)
     {
-
-
+        carryedItem = ingredientController.GetBaseIngredient(newIngredientType);
+        ShowCarryItem(carryedItem, true);
+    }
+    
+    public void EnableMoveInput(bool enable)
+    {
         
     }
-
     public void SetSelectedIngredient(Ingredient ingredient)
     {
         actualIngredient = ingredient;
     }
-
+    
+    #endregion
 
     #region Animations
 
@@ -298,18 +314,20 @@ public class PlayerController : MonoBehaviour
         {
             spritePlayer.flipX = true;
             carrySprite.transform.localPosition = new Vector3(0f, 0f, 0f);
-            carrySprite.sortingOrder = 11;
+            //carrySprite.sortingOrder = 11;
+            carrySprite.sortingLayerName = "Foreground";
             animator.SetFloat(LookDirection, 0f);
             return;
         }
 
-        carrySprite.sortingOrder = 9;
-        
+        //carrySprite.sortingOrder = 9;
+        carrySprite.sortingLayerName = "Midground";
         if (velocity.y >= 8) // Up
         {
             spritePlayer.flipX = false;
             carrySprite.transform.localPosition = new Vector3(0f, 2.5f, 0f);
             animator.SetFloat(LookDirection, 0.5f);
+            
             return;
         }
 
@@ -328,6 +346,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region OnTriggerEnters
     private void OnTriggerEnter2D(Collider2D col)
     {
        if (col.CompareTag("Ingredient"))
@@ -340,7 +359,7 @@ public class PlayerController : MonoBehaviour
        if (col.CompareTag("Kettle"))
        {
            canInteractKettle = true;
-           kettle.ShowBrewButton(true);
+           kettle.ShowTutorialText(true);
        }
        
        if (col.CompareTag("DeliveryController"))
@@ -351,6 +370,11 @@ public class PlayerController : MonoBehaviour
        {
            actualTable = col.GetComponent<Table>();
            canInteractTable = true;
+       }
+       if (col.CompareTag("Prepare"))
+       {
+           actualPrepare = col.GetComponent<TablePrepare>();
+           canInteractPrepare = true;
        }
     }
 
@@ -365,7 +389,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Kettle"))
         {
             canInteractKettle = false;
-            kettle.ShowBrewButton(false);
+            kettle.ShowTutorialText(false);
         }
         if (other.CompareTag("DeliveryController"))
         {
@@ -376,6 +400,13 @@ public class PlayerController : MonoBehaviour
             actualTable = null;
             canInteractTable = false;
         }
+
+        if (other.CompareTag("Prepare"))
+        {
+            actualPrepare = null;
+            canInteractPrepare = false;
+        }
+        
     }
 
     #endregion
