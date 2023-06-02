@@ -143,7 +143,12 @@ public class PlayerController : MonoBehaviour
     {
         if (canInteractPrepare && IsCarryingIngredient)
         {
-            actualPrepare.PrepareIngredient((Ingredient)carryedItem);
+            if (actualPrepare.PreCheckIngredient((Ingredient)carryedItem))
+            {
+                actualPrepare.PrepareIngredient((Ingredient)carryedItem);
+                carryedItem = null;
+                ShowCarryItem(null, false);
+            }
         }
         
         if (!IsCarryingNull && canInteractTable)
@@ -165,7 +170,7 @@ public class PlayerController : MonoBehaviour
         
         if (canInteractKettle)      // If in Interaction Area from Kettle
         {
-            if (IsCarryingIngredient  && !kettle.IsBrewing())
+            if (IsCarryingIngredient  && !kettle.IsBrewing()&& !kettle.IsKettleFull())
             {
                 kettle.AddToKettle((Ingredient)carryedItem);
                 ShowCarryItem(null, false);

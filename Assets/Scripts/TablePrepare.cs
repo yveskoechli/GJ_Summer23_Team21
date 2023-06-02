@@ -28,6 +28,8 @@ public class TablePrepare : MonoBehaviour
 
     private Ingredient newIngredient;
     private static readonly int IsPreparing = Animator.StringToHash("isPreparing");
+    private static readonly int IsPreparingHerb = Animator.StringToHash("isPreparingHerb");
+    private static readonly int IsPreparingCrow = Animator.StringToHash("isPreparingCrow");
 
     private void Awake()
     {
@@ -66,6 +68,7 @@ public class TablePrepare : MonoBehaviour
         {
             isPreparing = false;
             animator.SetBool(IsPreparing, false);
+
             player.EnableInput();
             EnableBrewStateUI(false);
             player.ChangeIngredient(GiveBackNewIngredient(newIngredient));
@@ -89,6 +92,14 @@ public class TablePrepare : MonoBehaviour
                 isPreparing = true;
                 EnableBrewStateUI(true);
                 newIngredient = ingredient;
+                if (ingredient.GetIngredientType() == IngredientType.DarkHerb)
+                {
+                    animator.SetTrigger(IsPreparingHerb);
+                }
+                else
+                {
+                    animator.SetTrigger(IsPreparingCrow);
+                }
                 animator.SetBool(IsPreparing, true); // Make is Preparing Crow Feet or Herb
                 //player.ChangeIngredient(GiveBackNewIngredient(ingredient));
             }
@@ -146,7 +157,29 @@ public class TablePrepare : MonoBehaviour
         Debug.Log("Prepare_Item_Triggered");
         
     }
-    
+
+    public bool PreCheckIngredient(Ingredient ingredient)
+    {
+        if (prepareType == PrepareType.Cutter)
+        {
+            if (ingredient.GetIngredientType() == IngredientType.DarkHerb || ingredient.GetIngredientType() == IngredientType.CrowFeet)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (ingredient.GetIngredientType() == IngredientType.Stars)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
