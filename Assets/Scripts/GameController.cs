@@ -9,15 +9,25 @@ public class GameController : MonoBehaviour
     private MenuController menuController;
     private PlayerController player;
 
+    [SerializeField] private string playerPrefProgress = "Level1.Progress";
 
+    [SerializeField] private CanvasGroup canvasGroupEndscreen;
+    [SerializeField] private GameObject endscreenUI;
     private void Awake()
     {
         milestoneController = FindObjectOfType<MilestoneController>();
         milestoneController.SetMileStoneProgress(progressPoints);
         menuController = FindObjectOfType<MenuController>();
         player = FindObjectOfType<PlayerController>();
+        
+        
     }
 
+    private void SaveEndProgress()
+    {
+        PlayerPrefs.SetInt(playerPrefProgress, progressPoints);
+        PlayerPrefs.Save();
+    }
     private void OnEnable()
     {
         MenuController.BaseMenuOpening += EnterPauseMode;
@@ -73,21 +83,12 @@ public class GameController : MonoBehaviour
         }
         milestoneController.SetMileStoneProgress(progressPoints);
     }
-    public void RestartGame()
-    {
-        //TODO Restart mechanic
-    }
     
-    public void GameOver()
-    {
-        Debug.Log("Game-Over");
-        //TODO Show Game-Over UI with RESTART Button
-    }
 
-    public void GameWon()
+    public void GameFinish()
     {
-        Debug.Log("You Won!");
-        //TODO Show Game-Won UI with MAIN-MENU Button
+        endscreenUI.SetActive(true);
+        canvasGroupEndscreen.alpha = 1;
     }
     
 }

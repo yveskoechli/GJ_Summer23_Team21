@@ -279,6 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressPoints: 0
+  playerPrefProgress: Level1.Progress
+  canvasGroupEndscreen: {fileID: 0}
+  endscreenUI: {fileID: 0}
 --- !u!1 &32159605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,7 +1721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &311436868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4908,13 +4911,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 826936888}
+  - component: {fileID: 826936889}
   m_Layer: 5
   m_Name: Endscreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &826936888
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4937,6 +4941,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &826936889
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826936887}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &850222687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5204,7 +5220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5451,6 +5467,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2078586047}
   - {fileID: 1191038506}
   - {fileID: 168396052}
   - {fileID: 594550008}
@@ -5459,9 +5476,8 @@ Transform:
   - {fileID: 2054841688}
   - {fileID: 610628642}
   - {fileID: 802243830}
-  - {fileID: 2078586047}
-  - {fileID: 317469105}
   - {fileID: 2054040101}
+  - {fileID: 317469105}
   - {fileID: 1702563696}
   - {fileID: 8201114}
   - {fileID: 1243177566}
@@ -6959,11 +6975,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -822138066
-      Data2: 1193669620
-      Data3: -873309308
-      Data4: 187495809
-    Path: event:/Music/MusicMainMenu
+      Data1: -1632169726
+      Data2: 1107961856
+      Data3: 440855964
+      Data4: 1658078050
+    Path: event:/Music/MusicIngameSlow
   Event: 
   PlayEvent: 11
   StopEvent: 12
@@ -11892,7 +11908,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 926825747}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2054040102
 MonoBehaviour:
@@ -12165,7 +12181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 926825747}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2078586048
 MonoBehaviour:

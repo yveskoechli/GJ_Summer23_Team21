@@ -1,5 +1,140 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7602228535601772942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Stars_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Stars_pickup
+  Guid:
+    Data1: 905592
+    Data2: 1220244721
+    Data3: 1700901253
+    Data4: 1828637003
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &-6855828665338666127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MusicIngameFast
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MusicIngameFast
+  Guid:
+    Data1: -1683259869
+    Data2: 1294822913
+    Data3: -1759951990
+    Data4: -178435986
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 50625
+--- !u!114 &-6137219623318261269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_throw_herb
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_throw_herb
+  Guid:
+    Data1: 132964907
+    Data2: 1195134744
+    Data3: 754941106
+    Data4: -1630130402
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
+--- !u!114 &-5959250335172275909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_brew_cooking
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_brew_cooking
+  Guid:
+    Data1: -1956025826
+    Data2: 1203143968
+    Data3: -1942480247
+    Data4: 1819578749
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 36772
+--- !u!114 &-5666345149656259253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Atmo
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Atmo
+  Guid:
+    Data1: -1633999423
+    Data2: 1253376339
+    Data3: 711638452
+    Data4: -79886296
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 105195
 --- !u!114 &-5449501674439579606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,11 +150,65 @@ MonoBehaviour:
   Path: FMODAssets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638213328701780939
+  lastModified: 638213443535750026
   FileSizes:
   - Name: 
-    Value: 974
+    Value: 2542
   Exists: 1
+--- !u!114 &-5240160624874090637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Stars_grind
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Stars_grind
+  Guid:
+    Data1: 222074538
+    Data2: 1101401349
+    Data3: -1297279101
+    Data4: -39752471
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2600
+--- !u!114 &-5226527477310238454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Potion_Deliver
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Potion_Deliver
+  Guid:
+    Data1: 985982851
+    Data2: 1264015643
+    Data3: -803634008
+    Data4: -1577414073
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2800
 --- !u!114 &-5103612822198234508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +236,114 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 49867
+--- !u!114 &-3626412949362419172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Herb_cut
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Herb_cut
+  Guid:
+    Data1: -186391854
+    Data2: 1295138424
+    Data3: -1218758776
+    Data4: 483361572
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2300
+--- !u!114 &-2575106677987774147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_SnakeEye_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_SnakeEye_pickup
+  Guid:
+    Data1: 1475540082
+    Data2: 1286442954
+    Data3: 735454087
+    Data4: -1830949334
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &-1279127575465824843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Order_Appear
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Order_Appear
+  Guid:
+    Data1: 696950093
+    Data2: 1255091072
+    Data3: 1006472878
+    Data4: -634439377
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1573
+--- !u!114 &-1217845881552730882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Crowfeet_cut_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Crowfeet_cut_pickup
+  Guid:
+    Data1: 967547284
+    Data2: 1163454277
+    Data3: 657624762
+    Data4: 2077619697
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,13 +361,153 @@ MonoBehaviour:
   - {fileID: 2309290312975441503}
   EditorEvents:
   - {fileID: -5103612822198234508}
+  - {fileID: 7393633661542166092}
+  - {fileID: 8821923235092433909}
+  - {fileID: -5959250335172275909}
+  - {fileID: -6855828665338666127}
+  - {fileID: -6137219623318261269}
+  - {fileID: 3861093774296810443}
+  - {fileID: 7579808362611127584}
+  - {fileID: 2217263994830973486}
+  - {fileID: 4352147784829915320}
+  - {fileID: -1279127575465824843}
+  - {fileID: 4834986734618094546}
+  - {fileID: 4073437118337827209}
+  - {fileID: 5044569854871959808}
+  - {fileID: -2575106677987774147}
+  - {fileID: -7602228535601772942}
+  - {fileID: -5226527477310238454}
+  - {fileID: -1217845881552730882}
+  - {fileID: 3610758610985205278}
+  - {fileID: 120555135695899775}
+  - {fileID: -5240160624874090637}
+  - {fileID: 5662934913446113073}
+  - {fileID: 8554388749759480692}
+  - {fileID: -5666345149656259253}
+  - {fileID: 3703901750678607815}
+  - {fileID: -3626412949362419172}
+  - {fileID: 8966390810556471728}
+  - {fileID: 5551936438092422400}
+  - {fileID: 1939273393357460171}
+  - {fileID: 6619221361288216905}
+  - {fileID: 5812241639373684212}
+  - {fileID: 2884907055143756749}
+  - {fileID: 1962051712278568728}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2309290312975441503}
   StringsBanks:
   - {fileID: -5449501674439579606}
-  cacheTime: 638213328701780939
+  cacheTime: 638213443535750026
   cacheVersion: 131603
+--- !u!114 &120555135695899775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Milestone_Smile
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Milestone_Smile
+  Guid:
+    Data1: 1234271908
+    Data2: 1138358541
+    Data3: 960201104
+    Data4: 1436876361
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 915
+--- !u!114 &1939273393357460171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Footsteps
+  Guid:
+    Data1: 80723180
+    Data2: 1172257575
+    Data3: 1784979095
+    Data4: 1270278671
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
+--- !u!114 &1962051712278568728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_brew_finish
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_brew_finish
+  Guid:
+    Data1: 1615914233
+    Data2: 1117305182
+    Data3: 781298593
+    Data4: 406453207
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &2217263994830973486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Blood_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Blood_pickup
+  Guid:
+    Data1: 1198285120
+    Data2: 1335153986
+    Data3: -1377593215
+    Data4: 923952598
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &2309290312975441503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +523,465 @@ MonoBehaviour:
   Path: FMODAssets/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638213328701770934
+  lastModified: 638213443535719995
   FileSizes: []
   Exists: 1
+--- !u!114 &2884907055143756749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Milestone_Fascinated
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Milestone_Fascinated
+  Guid:
+    Data1: -105938188
+    Data2: 1230203942
+    Data3: 668220863
+    Data4: -564684824
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 889
+--- !u!114 &3610758610985205278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Crowfeet_cut
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Crowfeet_cut
+  Guid:
+    Data1: -1777680989
+    Data2: 1162609335
+    Data3: -189013851
+    Data4: 335896856
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2460
+--- !u!114 &3703901750678607815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_brew_overcooked
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_brew_overcooked
+  Guid:
+    Data1: -1319781945
+    Data2: 1092708762
+    Data3: -314088293
+    Data4: -1206969849
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
+--- !u!114 &3861093774296810443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_blubber_idle
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_blubber_idle
+  Guid:
+    Data1: -1509311188
+    Data2: 1315412808
+    Data3: 1555107979
+    Data4: -1917959432
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9639
+--- !u!114 &4073437118337827209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Herb_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Herb_pickup
+  Guid:
+    Data1: 1665814121
+    Data2: 1093302654
+    Data3: -1547014987
+    Data4: -1276024678
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &4352147784829915320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_brew_fire
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_brew_fire
+  Guid:
+    Data1: -1114187704
+    Data2: 1224819757
+    Data3: 1771162761
+    Data4: 1161421733
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4600
+--- !u!114 &4834986734618094546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_potion_finish
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_potion_finish
+  Guid:
+    Data1: 966650958
+    Data2: 1239750447
+    Data3: 271300239
+    Data4: 838537792
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3108
+--- !u!114 &5044569854871959808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Time/TickingTime
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Time/TickingTime
+  Guid:
+    Data1: -1388424086
+    Data2: 1282829308
+    Data3: 1507683233
+    Data4: 693880167
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1149
+--- !u!114 &5551936438092422400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Crowfeet_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Crowfeet_pickup
+  Guid:
+    Data1: 1051434985
+    Data2: 1142861321
+    Data3: -511823181
+    Data4: 283286141
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &5662934913446113073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Button_Click
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Button_Click
+  Guid:
+    Data1: 1372127925
+    Data2: 1288610613
+    Data3: 1466224279
+    Data4: -678970448
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 856
+--- !u!114 &5812241639373684212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_throw_blood
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_throw_blood
+  Guid:
+    Data1: -1174709519
+    Data2: 1189077568
+    Data3: -1835386484
+    Data4: 906522899
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
+--- !u!114 &6619221361288216905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Stardust_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Stardust_pickup
+  Guid:
+    Data1: 1421469423
+    Data2: 1265211435
+    Data3: 1030904477
+    Data4: -768503615
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &7393633661542166092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MusicIngameSlow
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MusicIngameSlow
+  Guid:
+    Data1: -1632169726
+    Data2: 1107961856
+    Data3: 440855964
+    Data4: 1658078050
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62040
+--- !u!114 &7579808362611127584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Milestone_Neutral
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Milestone_Neutral
+  Guid:
+    Data1: 1406832703
+    Data2: 1134371189
+    Data3: -2106911067
+    Data4: 66267148
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1019
+--- !u!114 &8554388749759480692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Button_Hover
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Button_Hover
+  Guid:
+    Data1: 1963400895
+    Data2: 1180039434
+    Data3: 1273011863
+    Data4: -1710083029
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 574
+--- !u!114 &8821923235092433909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_throw_splash
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_throw_splash
+  Guid:
+    Data1: 1032595230
+    Data2: 1257243643
+    Data3: 1052310973
+    Data4: 403522018
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1600
+--- !u!114 &8966390810556471728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Ingredients/Ing_Herb_cut_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Ingredients/Ing_Herb_cut_pickup
+  Guid:
+    Data1: 1463473383
+    Data2: 1332525066
+    Data3: -612724039
+    Data4: 1456997224
+  Banks:
+  - {fileID: 2309290312975441503}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
