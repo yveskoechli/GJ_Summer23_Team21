@@ -1039,11 +1039,6 @@ MonoBehaviour:
   selectOnOpen: {fileID: 1633568275}
   selectPreviousOnClose: 1
   disableOnAwake: 1
---- !u!1 &297155586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4068199158309022613, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
-  m_PrefabInstance: {fileID: 1620904749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &297155587 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
@@ -2016,7 +2011,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c87cb88758aeb3741a2660e1b7369bec, type: 3}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2025,10 +2020,22 @@ PrefabInstance:
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1922566551}
+      objectReference: {fileID: 1011867032}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4068199159807957940, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_text
@@ -2446,7 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc96d9fa0e97d6458ae9f96e5c5913f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: Scenes/SampleScene
+  startScene: Scenes/Level_001
   menuScene: Scenes/MainMenu
   baseMenu: {fileID: 1258723986}
   preventBaseClosing: 1
@@ -3258,6 +3265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1444765144}
   - component: {fileID: 1444765145}
+  - component: {fileID: 1444765146}
   m_Layer: 5
   m_Name: EmoteLayoutGroup
   m_TagString: Untagged
@@ -3314,6 +3322,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1444765146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444765143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2698ba23303b5be4b90b93d4c8ffb4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emoteFascinated: {fileID: 24395272}
+  emoteSmile: {fileID: 354559544}
+  emoteNeutral: {fileID: 312914432}
+  playerPrefsLevel: Level2.Progress
 --- !u!1001 &1456447618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3521,6 +3545,101 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+--- !u!1 &1489931703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1489931706}
+  - component: {fileID: 1489931705}
+  - component: {fileID: 1489931704}
+  m_Layer: 0
+  m_Name: MusicController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1489931704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489931703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1633999423
+      Data2: 1253376339
+      Data3: 711638452
+      Data4: -79886296
+    Path: event:/Ambience/Atmo
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1489931705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489931703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -822138066
+      Data2: 1193669620
+      Data3: -873309308
+      Data4: 187495809
+    Path: event:/Music/MusicMainMenu
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &1489931706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489931703}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1539323541 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
@@ -3635,7 +3754,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c87cb88758aeb3741a2660e1b7369bec, type: 3}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3644,10 +3763,22 @@ PrefabInstance:
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 297155586}
+      objectReference: {fileID: 1011867032}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4068199159807957940, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_text
@@ -3831,7 +3962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: LoadLevel1
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3973,6 +4104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1735684461}
   - component: {fileID: 1735684462}
+  - component: {fileID: 1735684463}
   m_Layer: 5
   m_Name: EmoteLayoutGroup
   m_TagString: Untagged
@@ -4029,6 +4161,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1735684463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735684460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2698ba23303b5be4b90b93d4c8ffb4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emoteFascinated: {fileID: 521092403}
+  emoteSmile: {fileID: 395344454}
+  emoteNeutral: {fileID: 28362364}
+  playerPrefsLevel: Level3.Progress
 --- !u!1 &1768897559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4039,6 +4187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768897560}
   - component: {fileID: 1768897561}
+  - component: {fileID: 1768897562}
   m_Layer: 5
   m_Name: EmoteLayoutGroup
   m_TagString: Untagged
@@ -4095,6 +4244,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1768897562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768897559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2698ba23303b5be4b90b93d4c8ffb4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emoteFascinated: {fileID: 1983503646}
+  emoteSmile: {fileID: 1915635325}
+  emoteNeutral: {fileID: 1428172931}
+  playerPrefsLevel: Level1.Progress
 --- !u!1 &1859855407
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,11 +4412,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915635323}
   m_CullTransparentMesh: 1
---- !u!1 &1922566551 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4068199158309022613, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
-  m_PrefabInstance: {fileID: 836459096}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1922566552 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}

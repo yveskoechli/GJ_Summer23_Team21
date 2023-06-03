@@ -74,7 +74,11 @@ public class TablePrepare : MonoBehaviour
         else
         {
             isPreparing = false;
-            animator.SetBool(IsPreparing, false);
+            if (prepareType == PrepareType.Grinder)
+            {
+                animator.SetBool(IsPreparing, false);
+            }
+            
 
             player.EnableInput();
             EnableBrewStateUI(false);

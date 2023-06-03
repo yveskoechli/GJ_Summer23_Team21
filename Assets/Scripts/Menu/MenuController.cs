@@ -99,6 +99,22 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene(menuScene);
     }
+    
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("Level_001");
+    }
+    public void LoadLevel2()
+    {
+        SceneManager.LoadScene("Level_002");
+    }
+
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene("Level_003");
+    }
+
+    
 
     public void QuitGame()
     {
@@ -182,6 +198,8 @@ public class MenuController : MonoBehaviour
     {
         CloseMenu();
     }
+
+
 
     #endregion
 }
