@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +27,12 @@ public class TablePrepare : MonoBehaviour
     private float timeToFulfill = 2f;
     private float timeLeft = 0;
 
+    // Sounds
+    [SerializeField] private StudioEventEmitter herbCutSound;
+    [SerializeField] private StudioEventEmitter crowCutSound;
+    [SerializeField] private StudioEventEmitter starGrindSound;
+
+    
     private Ingredient newIngredient;
     private static readonly int IsPreparing = Animator.StringToHash("isPreparing");
     private static readonly int IsPreparingHerb = Animator.StringToHash("isPreparingHerb");
@@ -95,12 +102,14 @@ public class TablePrepare : MonoBehaviour
                 if (ingredient.GetIngredientType() == IngredientType.DarkHerb)
                 {
                     animator.SetTrigger(IsPreparingHerb);
+                    herbCutSound.Play();
                 }
                 else
                 {
                     animator.SetTrigger(IsPreparingCrow);
+                    crowCutSound.Play();
                 }
-                animator.SetBool(IsPreparing, true); // Make is Preparing Crow Feet or Herb
+                //animator.SetBool(IsPreparing, true); // Make is Preparing Crow Feet or Herb
                 //player.ChangeIngredient(GiveBackNewIngredient(ingredient));
             }
         }
@@ -111,6 +120,7 @@ public class TablePrepare : MonoBehaviour
             EnableBrewStateUI(true);
             newIngredient = ingredient;
             animator.SetBool(IsPreparing, true);
+            starGrindSound.Play();
             
         }
         else
