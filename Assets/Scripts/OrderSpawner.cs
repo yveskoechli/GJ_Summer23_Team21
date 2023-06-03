@@ -36,6 +36,10 @@ public class OrderSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (orderCount == maxOrders && actualOrders.Count == 0)
+        {
+            gameController.GameFinish();
+        }
         if (canStartNextOrder)
         {
             StartCoroutine(WaitForNextOrder(orderWaitTime));

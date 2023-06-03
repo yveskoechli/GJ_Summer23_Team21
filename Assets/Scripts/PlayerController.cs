@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -55,6 +56,14 @@ public class PlayerController : MonoBehaviour
     private TablePrepare actualPrepare;
     
 
+    //Sounds
+    [SerializeField] private StudioEventEmitter stepSound;
+    [SerializeField] private StudioEventEmitter throwSound;
+    [SerializeField] private StudioEventEmitter pickupItemSound;
+    [SerializeField] private StudioEventEmitter placeItemSound;
+    [SerializeField] private StudioEventEmitter pickupPotionSound;
+    [SerializeField] private StudioEventEmitter deliverPotionSound;
+    
     private bool IsCarryingPotion => carryedItem is Potion;
     private bool IsCarryingIngredient => carryedItem is Ingredient;
     private bool IsCarryingNull => carryedItem == null;
@@ -141,7 +150,7 @@ public class PlayerController : MonoBehaviour
     
     private void Collect(InputAction.CallbackContext _)
     {
-        if (canInteractPrepare && IsCarryingIngredient)
+        if (canInteractPrepare && IsCarryingIngredient)     // Prepare Ingredient
         {
             if (actualPrepare.PreCheckIngredient((Ingredient)carryedItem))
             {
@@ -151,20 +160,22 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (!IsCarryingNull && canInteractTable)
+        if (!IsCarryingNull && canInteractTable)    // Place Item
         {
             if (actualTable.IsEmpty())
             {
                 PlaceItem();
+                placeItemSound.Play();
             }
             
         }
         
-        if (IsCarryingPotion && canInteractDelivery)
+        if (IsCarryingPotion && canInteractDelivery)    // Deliver Item
         {
             deliveryController.DeliverOrder((Potion)carryedItem);
             ShowCarryItem(null, false);
             carryedItem = null;
+            deliverPotionSound.Play();
             return;
         }
         
@@ -175,6 +186,7 @@ public class PlayerController : MonoBehaviour
                 kettle.AddToKettle((Ingredient)carryedItem);
                 ShowCarryItem(null, false);
                 carryedItem = null;
+                throwSound.Play();
                 
                 Debug.Log("Ingredient delivered!");
             }
@@ -184,6 +196,7 @@ public class PlayerController : MonoBehaviour
                 if (IsCarryingPotion)
                 {
                     ShowCarryItem(carryedItem, true);
+                    pickupPotionSound.Play();
                 }
                 
             }
@@ -201,11 +214,13 @@ public class PlayerController : MonoBehaviour
             //carryedItem = actualIngredient;
             carryedItem = ingredientController.GetBaseIngredient(actualIngredient);
             ShowCarryItem(carryedItem, true);
-
+            pickupItemSound.Play();
+            
             if (canInteractTable)
             {
                 carryedItem = FindItemInScene(carryedItem);
                 actualTable.DeleteItem();
+                
                 //Destroy(actualIngredientGameobject);
             }
             
@@ -349,6 +364,16 @@ public class PlayerController : MonoBehaviour
         spritePlayer.flipX = false;
         carrySprite.transform.localPosition = new Vector3(1.18f, 0.682f, 0f);
         animator.SetFloat(LookDirection, 1f);
+    }
+
+    #endregion
+
+    #region Sounds
+
+    public void FMOD_PlayStepsound()
+    {
+        Debug.Log("Stepsound Played");
+        stepSound.Play();
     }
 
     #endregion

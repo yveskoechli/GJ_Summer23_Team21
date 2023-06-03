@@ -1,5 +1,11 @@
 using System;
+using System.Collections;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -13,6 +19,10 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private CanvasGroup canvasGroupEndscreen;
     [SerializeField] private GameObject endscreenUI;
+    [SerializeField] private Selectable selectableEndscreenButton;
+    
+    [SerializeField] private string nextLevel = "Main_Menu";
+    
     private void Awake()
     {
         milestoneController = FindObjectOfType<MilestoneController>();
@@ -87,8 +97,47 @@ public class GameController : MonoBehaviour
 
     public void GameFinish()
     {
+        Debug.Log("GameFinish Triggered");
+        StartCoroutine(WaitForGameFinish(2f));
+        //EnterPauseMode();
+        //endscreenUI.SetActive(true);
+        //DOShow();
+    }
+    public Tween DOShow()
+    {
+        this.DOKill();
+        Sequence sequence = DOTween.Sequence(this)
+            .Append(DOFade(1).From(0));
+        return sequence;    
+    }
+    private TweenerCore<float, float, FloatOptions> DOFade(float targetAlpha)
+    {
+        return canvasGroupEndscreen.DOFade(targetAlpha, 0.75f).SetEase(Ease.InOutSine);
+    }
+    
+    private IEnumerator WaitForGameFinish(float time)
+    {
+        yield return new WaitForSeconds(time);
+        EnterPauseMode();
         endscreenUI.SetActive(true);
         canvasGroupEndscreen.alpha = 1;
+        selectableEndscreenButton.Select();
+        //DOShow();
+    }
+    
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(nextLevel);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
     
 }

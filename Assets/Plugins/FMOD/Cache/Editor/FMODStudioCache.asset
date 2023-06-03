@@ -150,7 +150,7 @@ MonoBehaviour:
   Path: FMODAssets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638213443535750026
+  lastModified: 638213544973479261
   FileSizes:
   - Name: 
     Value: 2542
@@ -196,19 +196,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Potion_Deliver
   Guid:
-    Data1: 985982851
-    Data2: 1264015643
-    Data3: -803634008
-    Data4: -1577414073
+    Data1: 884505054
+    Data2: 1145942185
+    Data3: 1387681678
+    Data4: -183181444
   Banks:
   - {fileID: 2309290312975441503}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2800
+  Length: 1574
 --- !u!114 &-5103612822198234508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,19 +304,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Order_Appear
   Guid:
-    Data1: 696950093
-    Data2: 1255091072
-    Data3: 1006472878
-    Data4: -634439377
+    Data1: -1191745643
+    Data2: 1262051309
+    Data3: -303476817
+    Data4: 2115182119
   Banks:
   - {fileID: 2309290312975441503}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1573
+  Length: 1593
 --- !u!114 &-1217845881552730882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   - {fileID: 2309290312975441503}
   StringsBanks:
   - {fileID: -5449501674439579606}
-  cacheTime: 638213443535750026
+  cacheTime: 638213544973479261
   cacheVersion: 131603
 --- !u!114 &120555135695899775
 MonoBehaviour:
@@ -441,14 +441,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Footsteps
   Guid:
-    Data1: 80723180
-    Data2: 1172257575
-    Data3: 1784979095
-    Data4: 1270278671
+    Data1: -1939301706
+    Data2: 1089100054
+    Data3: -517732930
+    Data4: 528909134
   Banks:
   - {fileID: 2309290312975441503}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -523,7 +523,7 @@ MonoBehaviour:
   Path: FMODAssets/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638213443535719995
+  lastModified: 638213544973429230
   FileSizes: []
   Exists: 1
 --- !u!114 &2884907055143756749
@@ -714,7 +714,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3108
+  Length: 2048
 --- !u!114 &5044569854871959808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 856
+  Length: 750
 --- !u!114 &5812241639373684212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,7 +930,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 574
+  Length: 520
 --- !u!114 &8821923235092433909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1600
+  Length: 1060
 --- !u!114 &8966390810556471728
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,9 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +47,14 @@ public class KettleController : MonoBehaviour
 
     [SerializeField] private Potion brewedPotion; // Serialize Field only for Debug to see in Inspector
 
+    //Sounds
+    [SerializeField] private StudioEventEmitter kettleVerkacktSound;
+    [SerializeField] private StudioEventEmitter potionFinishSound;
+    [SerializeField] private StudioEventEmitter blubberIdleSound;
+    [SerializeField] private StudioEventEmitter brewStartSound;
+
+    private bool playSoundOnce = true;
+    
     private bool isBrewing;
     private bool isPotionReady;
 
@@ -70,6 +80,13 @@ public class KettleController : MonoBehaviour
         EnableBrewStateUI(false);
 
         ClearKettle();
+        
+        blubberIdleSound.Play();
+    }
+
+    private void OnDisable()
+    {
+        blubberIdleSound.Stop();
     }
 
     private void Update()
@@ -107,6 +124,7 @@ public class KettleController : MonoBehaviour
             brewedPotion = null;
             animator.SetBool(IsCooking, false);
             
+            
         }
         else
         {
@@ -115,6 +133,7 @@ public class KettleController : MonoBehaviour
             if (CheckmarkOKTime>0f)
             {
                 SetCheckMark(1);
+                PlayOnce();
             }
             else
             {
@@ -124,6 +143,15 @@ public class KettleController : MonoBehaviour
             fillAmountImage.color = Color.Lerp(Color.green, Color.red, timeToStayGoodNormalized);
         }
 
+    }
+
+    private void PlayOnce()
+    {
+        if (playSoundOnce)
+        {
+            potionFinishSound.Play();
+            playSoundOnce = false;
+        }
     }
 
     private void SetCheckMark(int brewState)
@@ -222,6 +250,7 @@ public class KettleController : MonoBehaviour
             isPotionReady = false;
             brewedPotion = potion;
             animator.SetBool(IsCooking, true);
+            brewStartSound.Play();
             //ClearKettle();
         }
         //orderSpawner.CheckOrders(); //TODO needs to be checked in Delivery-Area
@@ -256,6 +285,7 @@ public class KettleController : MonoBehaviour
         EnableBrewStateUI(false);
         ColorIngredientSprites(false);
         animator.SetBool(IsCooking, false);
+        playSoundOnce = true;
         Debug.Log("Kettle cleared!");
     }
 
@@ -272,6 +302,7 @@ public class KettleController : MonoBehaviour
     {
         ColorIngredientSprites(true);
         smokeAnimator.SetTrigger("overcooked");
+        kettleVerkacktSound.Play();
     }
 
     private void ColorIngredientSprites(bool overcooked)
