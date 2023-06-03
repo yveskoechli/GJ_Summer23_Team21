@@ -279,11 +279,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressPoints: 0
-  playerPrefProgress: Level3.Progress
+  playerPrefProgress: Level1.Progress
   canvasGroupEndscreen: {fileID: 826936889}
   endscreenUI: {fileID: 311436867}
   selectableEndscreenButton: {fileID: 831782460}
-  nextLevel: Main_Menu
+  nextLevel: Level_002
   emoteFascinated: {fileID: 2079777438}
   emoteSmile: {fileID: 1234676577}
   emoteNeutral: {fileID: 1258965377}
@@ -652,9 +652,6 @@ MonoBehaviour:
   orderPrefabs:
   - {fileID: 6481380341593124286, guid: b3593124f2b73034c87d6ba869b8c335, type: 3}
   - {fileID: 4924287872236987138, guid: 389bfc3f5e784714a9789bc62bd84c25, type: 3}
-  - {fileID: 6481380341593124286, guid: 3fd2bf508dad9fb4291d900702d893a7, type: 3}
-  - {fileID: 6481380341593124286, guid: 0503c0a3e08beab4383d98b7667851ab, type: 3}
-  - {fileID: 4924287872236987138, guid: fd78a1cfd6b06ab4daf588f0866a3436, type: 3}
   actualOrders: []
   maxOrders: 12
   orderWaitTime: 14
