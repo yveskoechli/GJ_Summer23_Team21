@@ -22,7 +22,16 @@ public class GameController : MonoBehaviour
     [SerializeField] private Selectable selectableEndscreenButton;
     
     [SerializeField] private string nextLevel = "Main_Menu";
+
+    [SerializeField] private Image emoteFascinated;
+    [SerializeField] private Image emoteSmile;
+    [SerializeField] private Image emoteNeutral;
     
+    private float highlightedAlpha = 1f;
+    private float disabledAlpha = 0.3f;
+
+    private Color highlightedColor = Color.white;
+    private Color disabledColor = Color.white;
     private void Awake()
     {
         milestoneController = FindObjectOfType<MilestoneController>();
@@ -30,14 +39,47 @@ public class GameController : MonoBehaviour
         menuController = FindObjectOfType<MenuController>();
         player = FindObjectOfType<PlayerController>();
         
+        highlightedColor.a = highlightedAlpha;
+        disabledColor.a = disabledAlpha;
         
     }
 
     private void SaveEndProgress()
     {
+        
         PlayerPrefs.SetInt(playerPrefProgress, progressPoints);
         PlayerPrefs.Save();
+        //StartCoroutine(WaitForEmote(0.1f));
+        SetEmote(progressPoints);
     }
+    
+    private void SetEmote(int progressAmount)
+    {
+        switch (progressAmount)
+        {
+            case >=10:
+                emoteFascinated.color = highlightedColor;
+                emoteSmile.color = disabledColor;
+                emoteNeutral.color = disabledColor;
+                break;
+            case >= 7:
+                emoteFascinated.color = disabledColor;
+                emoteSmile.color = highlightedColor;
+                emoteNeutral.color = disabledColor;
+                break;
+            case >= 4:
+                emoteFascinated.color = disabledColor;
+                emoteSmile.color = disabledColor;
+                emoteNeutral.color = highlightedColor;
+                break;
+            default:
+                emoteFascinated.color = disabledColor;
+                emoteSmile.color = disabledColor;
+                emoteNeutral.color = disabledColor;
+                break;
+        }
+    }
+    
     private void OnEnable()
     {
         MenuController.BaseMenuOpening += EnterPauseMode;
@@ -120,11 +162,17 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(time);
         EnterPauseMode();
         endscreenUI.SetActive(true);
+        SaveEndProgress();
         canvasGroupEndscreen.alpha = 1;
         selectableEndscreenButton.Select();
         //DOShow();
     }
     
+    private IEnumerator WaitForEmote(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SetEmote(progressPoints);
+    }
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
