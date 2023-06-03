@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (!IsCarryingNull && canInteractTable)    // Place Item
+        if (IsCarryingIngredient && canInteractTable)    // Place Item
         {
             if (actualTable.IsEmpty())
             {

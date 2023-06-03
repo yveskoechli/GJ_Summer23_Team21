@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,12 +25,14 @@ public class OrderSpawner : MonoBehaviour
     private int orderCount = 0;
     private int possibleOrdersAmount = 0;
     private int maxOrdersAtOnce = 5;
-    
+
+    private StudioEventEmitter orderIncomeSound;
     private void Awake()
     {
         canStartNextOrder = false;
         gameController = FindObjectOfType<GameController>();
         possibleOrdersAmount = orderPrefabs.Count;
+        orderIncomeSound = GetComponent<StudioEventEmitter>();
         
         StartCoroutine(WaitForNextOrder(1f));
     }
@@ -68,6 +71,7 @@ public class OrderSpawner : MonoBehaviour
         actualOrders.Insert(0, newOrder);
         orderCount++;
         canStartNextOrder = true;
+        orderIncomeSound.Play();
     }
 
     public void CheckOrders(PotionType checkPotionType) // Check all open Orders for a match -> If multiple matches, take match with lowest remaining time.
