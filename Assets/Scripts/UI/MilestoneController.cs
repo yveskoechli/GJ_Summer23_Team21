@@ -1,4 +1,5 @@
 
+using FMODUnity;
 using UnityEngine;
 
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class MilestoneController : MonoBehaviour
     private Color disabledColor = Color.white;
 
     private int milestoneProgress;
+    
+    
     
     private void Awake()
     {
@@ -44,16 +47,25 @@ public class MilestoneController : MonoBehaviour
         switch (progressAmount)
         {
             case 10:
+                emoteFascinated.GetComponent<StudioEventEmitter>().Play();
                 emoteFascinated.color = highlightedColor;
                 emoteSmile.color = disabledColor;
                 emoteNeutral.color = disabledColor;
                 break;
             case >= 7:
+                if (progressAmount == 7)
+                {
+                    emoteSmile.GetComponent<StudioEventEmitter>().Play();
+                }
                 emoteFascinated.color = disabledColor;
                 emoteSmile.color = highlightedColor;
                 emoteNeutral.color = disabledColor;
                 break;
             case >= 4:
+                if (progressAmount == 4)
+                {
+                    emoteNeutral.GetComponent<StudioEventEmitter>().Play();
+                }
                 emoteFascinated.color = disabledColor;
                 emoteSmile.color = disabledColor;
                 emoteNeutral.color = highlightedColor;
