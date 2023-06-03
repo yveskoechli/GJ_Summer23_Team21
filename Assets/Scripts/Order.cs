@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +17,8 @@ public class Order : MonoBehaviour
     [SerializeField] private float timeToFulfill = 10f; // Check in Inspector! (not automatically set..)
 
     [SerializeField] private Image fillAmountImage;
-    
-    
+
+    private StudioEventEmitter timeoutSound;
     
     private OrderSpawner orderSpawner;
     
@@ -33,6 +34,7 @@ public class Order : MonoBehaviour
         timeLeft = timeToFulfill;
         orderSpawner = FindObjectOfType<OrderSpawner>();
         gameController = FindObjectOfType<GameController>();
+        timeoutSound = GetComponent<StudioEventEmitter>();
     }
 
     private void Update()
@@ -58,6 +60,7 @@ public class Order : MonoBehaviour
             canCountDown = false;
             gameController.RemoveProgressPoint();
             orderSpawner.RemoveFromOrderList(this);
+            timeoutSound.Play();
             Destroy(this.gameObject, 0.1f);
             //StartCoroutine(DestroyDelayed(0f));
         }

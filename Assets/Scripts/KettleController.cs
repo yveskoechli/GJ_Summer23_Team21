@@ -52,6 +52,7 @@ public class KettleController : MonoBehaviour
     [SerializeField] private StudioEventEmitter potionFinishSound;
     [SerializeField] private StudioEventEmitter blubberIdleSound;
     [SerializeField] private StudioEventEmitter brewStartSound;
+    [SerializeField] private StudioEventEmitter clearSound;
 
     private bool playSoundOnce = true;
     
@@ -286,6 +287,7 @@ public class KettleController : MonoBehaviour
         ColorIngredientSprites(false);
         animator.SetBool(IsCooking, false);
         playSoundOnce = true;
+        clearSound.Play();
         Debug.Log("Kettle cleared!");
     }
 
