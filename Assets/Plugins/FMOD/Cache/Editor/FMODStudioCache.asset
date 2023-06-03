@@ -150,10 +150,10 @@ MonoBehaviour:
   Path: FMODAssets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638213548119185896
+  lastModified: 638213606461644436
   FileSizes:
   - Name: 
-    Value: 2542
+    Value: 2578
   Exists: 1
 --- !u!114 &-6659289141835848264
 MonoBehaviour:
@@ -332,7 +332,7 @@ MonoBehaviour:
   Path: FMODAssets/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638213575557528335
+  lastModified: 638213606461594399
   FileSizes: []
   Exists: 1
 --- !u!114 &-3319318742156293445
@@ -389,6 +389,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
+--- !u!114 &-3061777589990426289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kettle/Kettle_clear
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kettle/Kettle_clear
+  Guid:
+    Data1: -645432288
+    Data2: 1161616706
+    Data3: -1033056895
+    Data4: 75536488
+  Banks:
+  - {fileID: -3593684283074549405}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 626
 --- !u!114 &-2816942356521017174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,12 +546,13 @@ MonoBehaviour:
   - {fileID: 5611410701740368863}
   - {fileID: 659540832900293875}
   - {fileID: -2384202228741999439}
+  - {fileID: -3061777589990426289}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3593684283074549405}
   StringsBanks:
   - {fileID: -7096800707842460431}
-  cacheTime: 638213575557528335
+  cacheTime: 638213606461644436
   cacheVersion: 131603
 --- !u!114 &256235779388814639
 MonoBehaviour:
