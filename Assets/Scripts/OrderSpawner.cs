@@ -26,10 +26,13 @@ public class OrderSpawner : MonoBehaviour
     private int possibleOrdersAmount = 0;
     private int maxOrdersAtOnce = 5;
 
+    private bool onceGameFinish = false;
+
     private StudioEventEmitter orderIncomeSound;
     private void Awake()
     {
         canStartNextOrder = false;
+        onceGameFinish = false;
         gameController = FindObjectOfType<GameController>();
         possibleOrdersAmount = orderPrefabs.Count;
         orderIncomeSound = GetComponent<StudioEventEmitter>();
@@ -39,16 +42,18 @@ public class OrderSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (onceGameFinish) { return; }
+        
         if (orderCount == maxOrders && actualOrders.Count == 0)
         {
             gameController.GameFinish();
+            onceGameFinish = true;
         }
         if (canStartNextOrder)
         {
             StartCoroutine(WaitForNextOrder(orderWaitTime));
             canStartNextOrder = false;
         }
-        
         
     }
 

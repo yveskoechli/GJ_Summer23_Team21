@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SFX/Ingredients/Ing_SnakeEye_pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1475540082
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1286442954
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 735454087
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -1830949334
+      objectReference: {fileID: 0}
     - target: {fileID: 1869825077229674319, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -55,6 +75,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_SnakeEye
       objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SFX/Kettle/Kettle_throw_splash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1032595230
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1257243643
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 1052310973
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 403522018
+      objectReference: {fileID: 0}
     - target: {fileID: 5788111054352523897, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: ingredientType
       value: 2
@@ -62,14 +102,14 @@ PrefabInstance:
     - target: {fileID: 6193807157784764701, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ae39742fa07435c44a5951bfe93309c4, type: 3}
+      objectReference: {fileID: 21300000, guid: c4e49419a04ca6343b3d90e8b5a9d2cc, type: 3}
     - target: {fileID: 6583813768246493002, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 3
+      value: 1.875
       objectReference: {fileID: 0}
     - target: {fileID: 6583813768246493002, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3
+      value: 1.875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}

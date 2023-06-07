@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SFX/Ingredients/Ing_Stardust_pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1421469423
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1265211435
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 1030904477
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -768503615
+      objectReference: {fileID: 0}
     - target: {fileID: 1869825077229674319, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SFX/Ingredients/Ing_Crowfeet_cut_pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 967547284
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1163454277
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 657624762
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236779113986958399, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 2077619697
+      objectReference: {fileID: 0}
     - target: {fileID: 1869825077229674319, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5542498955618237929, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_Name
-      value: Ingredient_CrowFeet_Cutted
+      value: Ingredient_CrowFeet_Sliced
       objectReference: {fileID: 0}
     - target: {fileID: 5788111054352523897, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: ingredientType

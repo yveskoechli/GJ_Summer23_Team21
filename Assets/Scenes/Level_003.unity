@@ -4301,7 +4301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -21.666666
+      value: -41.25
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4478,7 +4478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -108.33333
+      value: -88.75
       objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022612, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8663,6 +8663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 4068199158309022613, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4068199158309022615, guid: fb7a98bf410c1da4f9dd155c48f89fe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -12253,7 +12257,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -35
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

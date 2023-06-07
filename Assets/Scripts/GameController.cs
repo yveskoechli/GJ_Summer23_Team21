@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -139,33 +139,21 @@ public class GameController : MonoBehaviour
 
     public void GameFinish()
     {
-        Debug.Log("GameFinish Triggered");
         StartCoroutine(WaitForGameFinish(2f));
-        //EnterPauseMode();
-        //endscreenUI.SetActive(true);
-        //DOShow();
+
     }
-    public Tween DOShow()
-    {
-        this.DOKill();
-        Sequence sequence = DOTween.Sequence(this)
-            .Append(DOFade(1).From(0));
-        return sequence;    
-    }
-    private TweenerCore<float, float, FloatOptions> DOFade(float targetAlpha)
-    {
-        return canvasGroupEndscreen.DOFade(targetAlpha, 0.75f).SetEase(Ease.InOutSine);
-    }
+    
     
     private IEnumerator WaitForGameFinish(float time)
     {
         yield return new WaitForSeconds(time);
-        EnterPauseMode();
         endscreenUI.SetActive(true);
         SaveEndProgress();
-        canvasGroupEndscreen.alpha = 1;
         selectableEndscreenButton.Select();
-        //DOShow();
+        canvasGroupEndscreen.alpha = 0f;
+        //this.DOKill();
+        DOTween.To(() => canvasGroupEndscreen.alpha, x => canvasGroupEndscreen.alpha = x, 1f, 1).OnComplete(EnterPauseMode);
+
     }
     
     private IEnumerator WaitForEmote(float time)

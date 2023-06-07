@@ -134,7 +134,6 @@ public class PlayerController : MonoBehaviour
         input.Disable();
     }
 
-
     #region Inputs
 
 
@@ -181,24 +180,25 @@ public class PlayerController : MonoBehaviour
         
         if (canInteractKettle)      // If in Interaction Area from Kettle
         {
-            if (IsCarryingIngredient  && !kettle.IsBrewing()&& !kettle.IsKettleFull())
+            if (IsCarryingIngredient  && !kettle.IsBrewing()&& !kettle.IsKettleFull())  // Place Ingredient in Kettle
             {
+                carryedItem.PlayPlaceSound();
                 kettle.AddToKettle((Ingredient)carryedItem);
                 ShowCarryItem(null, false);
                 carryedItem = null;
-                throwSound.Play();
+                //throwSound.Play();
                 
                 Debug.Log("Ingredient delivered!");
             }
-            else if (IsCarryingNull)
+            else if (IsCarryingNull)        // Get Potion
             {
-                carryedItem = kettle.GetBrewedPotion();
-                if (IsCarryingPotion)
+                carryedItem = kettle.GetBrewedPotion(); 
+                if (IsCarryingPotion)   // If Get Potion was successful -> Attach Item to Player
                 {
                     ShowCarryItem(carryedItem, true);
-                    pickupPotionSound.Play();
+                    carryedItem.PlayPickUpSound();
+                    //pickupPotionSound.Play();
                 }
-                
             }
             return;
         }
@@ -208,13 +208,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        if (actualIngredient != null)
+        if (actualIngredient != null)       // Take Ingredient
         {
             
             //carryedItem = actualIngredient;
             carryedItem = ingredientController.GetBaseIngredient(actualIngredient);
             ShowCarryItem(carryedItem, true);
-            pickupItemSound.Play();
+            carryedItem.PlayPickUpSound();
+            //pickupItemSound.Play();
             
             if (canInteractTable)
             {

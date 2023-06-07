@@ -58,6 +58,8 @@ public class KettleController : MonoBehaviour
     
     private bool isBrewing;
     private bool isPotionReady;
+    private bool isOvercooked;
+    
 
     private float CheckmarkOKTime = 2f;
     
@@ -70,6 +72,7 @@ public class KettleController : MonoBehaviour
         isBrewing = false;
         isPotionReady = false;
         canCountDown = false;
+        isOvercooked = false;
         SetCheckMark(0);
         
         orderSpawner = FindObjectOfType<OrderSpawner>();
@@ -205,17 +208,12 @@ public class KettleController : MonoBehaviour
 
     public void AddToKettle(Ingredient ingredient)
     {
-        if (isBrewing)
-        {
-            return;
-        }
-        Debug.Log("KettleAddTriggered");
+        if (isBrewing) { return; }
+        if (isOvercooked) { return; }
+        //Debug.Log("KettleAddTriggered");
         int listLength = ingredients.Count;
-        if (listLength >= maxListLength)
-        {
-            //CheckOrder(); 
-            return;
-        }
+        if (listLength >= maxListLength) { return; }
+        
         ingredients.Insert(listLength, ingredient);
         //ingredientTypes.Insert(listLength, ingredient.GetIngredientType());
         ingredientsSprites[listLength].sprite = ingredient.GetComponent<SpriteRenderer>().sprite;
@@ -233,6 +231,8 @@ public class KettleController : MonoBehaviour
     public void BrewPotion()    // If all Ingredients ar in Kettle -> Start Brewing and Check for possible combination.
     {
         if (isBrewing) { return; }
+        if (isOvercooked) { return; }
+        
         isBrewing = true;
         fillAmountImage.color = Color.green;
         Potion potion = combinationManager.CheckPotionCombination(ingredients.Select(ingredient => ingredient.GetIngredientType()).ToList());
@@ -242,7 +242,7 @@ public class KettleController : MonoBehaviour
             OverCooked();
             //TODO Turn Ingredients to black -> That Player needs to Clear Kettle first before adding new Ingr.
             isBrewing = false;
-            return;
+            //return;
         }
         else
         {       // TODO Maybe put this in a own Function like "ActivateKettle" (then also "DeactivateKettle" needed)
@@ -278,6 +278,7 @@ public class KettleController : MonoBehaviour
     
     public void ClearKettle()
     {
+        isOvercooked = false;
         isBrewing = false;
         isPotionReady = false;
         brewedPotion = null;
@@ -302,6 +303,7 @@ public class KettleController : MonoBehaviour
 
     private void OverCooked()
     {
+        isOvercooked = true;
         ColorIngredientSprites(true);
         smokeAnimator.SetTrigger("overcooked");
         kettleVerkacktSound.Play();

@@ -150,10 +150,10 @@ MonoBehaviour:
   Path: FMODAssets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638213606461644436
+  lastModified: 638216809469384404
   FileSizes:
   - Name: 
-    Value: 2578
+    Value: 2690
   Exists: 1
 --- !u!114 &-6659289141835848264
 MonoBehaviour:
@@ -332,9 +332,36 @@ MonoBehaviour:
   Path: FMODAssets/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638213606461594399
+  lastModified: 638216809469334364
   FileSizes: []
   Exists: 1
+--- !u!114 &-3417859639545306523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Potions/Potion_place_table
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Potions/Potion_place_table
+  Guid:
+    Data1: 494764550
+    Data2: 1106937302
+    Data3: -581415250
+    Data4: -285971723
+  Banks:
+  - {fileID: -3593684283074549405}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 505
 --- !u!114 &-3319318742156293445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,12 +574,14 @@ MonoBehaviour:
   - {fileID: 659540832900293875}
   - {fileID: -2384202228741999439}
   - {fileID: -3061777589990426289}
+  - {fileID: -3417859639545306523}
+  - {fileID: 8520918436058527848}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3593684283074549405}
   StringsBanks:
   - {fileID: -7096800707842460431}
-  cacheTime: 638213606461644436
+  cacheTime: 638216809469384404
   cacheVersion: 131603
 --- !u!114 &256235779388814639
 MonoBehaviour:
@@ -959,6 +988,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 750
+--- !u!114 &8520918436058527848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Potions/Potion_pickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Potions/Potion_pickup
+  Guid:
+    Data1: -1285162284
+    Data2: 1095426793
+    Data3: -1423063109
+    Data4: -1022525867
+  Banks:
+  - {fileID: -3593684283074549405}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 955
 --- !u!114 &8744326437643051824
 MonoBehaviour:
   m_ObjectHideFlags: 0
