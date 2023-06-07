@@ -2,14 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using FMODUnity;
 
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class KettleController : MonoBehaviour
 {
     private static readonly int IsCooking = Animator.StringToHash("isCooking");
+    private static readonly int IsOvercooking = Animator.StringToHash("isOvercooking");
 
     [SerializeField] private List<SpriteRenderer> ingredientsSprites;
 
@@ -25,6 +28,7 @@ public class KettleController : MonoBehaviour
     
     [SerializeField] private Image fillAmountImage;
     [SerializeField] private Image checkmarkImageOK;
+    [SerializeField] private Image checkmarkImageWarningBG;
     [SerializeField] private Image checkmarkImageWarning;
     [SerializeField] private Image checkmarkImageNOK;
     [SerializeField] private GameObject fillAmountUI;
@@ -33,7 +37,7 @@ public class KettleController : MonoBehaviour
     private float timeLeft = 0;
     private bool canCountDown = true;
 
-    
+    private bool isPlayerNearby = false;
     
     private OrderSpawner orderSpawner;
     private CombinationManager combinationManager;
@@ -61,7 +65,9 @@ public class KettleController : MonoBehaviour
     private bool isOvercooked;
     
 
-    private float CheckmarkOKTime = 2f;
+    private float CheckmarkOKTime = 1.5f;
+
+    private bool checkMarkFillOnce = true;
     
     private void Awake()
     {
@@ -110,7 +116,7 @@ public class KettleController : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft > 0)
         {
-            CheckmarkOKTime = 2f;
+            CheckmarkOKTime = 1.5f;
             float fillAmountNormalized = 1 - (1 / (timeToFulfill) * (timeLeft));
             if (fillAmountNormalized >= 1) { fillAmountNormalized = 1;}
         
@@ -127,8 +133,8 @@ public class KettleController : MonoBehaviour
             isPotionReady = false;
             brewedPotion = null;
             animator.SetBool(IsCooking, false);
-            
-            
+            checkMarkFillOnce = true;
+
         }
         else
         {
@@ -142,6 +148,13 @@ public class KettleController : MonoBehaviour
             else
             {
                 SetCheckMark(2);
+                if (checkMarkFillOnce)
+                {
+                    checkMarkFillOnce = false;
+                    checkmarkImageWarning.fillAmount = 0;
+                    DOTween.To(() => checkmarkImageWarning.fillAmount, x => checkmarkImageWarning.fillAmount = x, 1f, 3);
+                }
+                
             }
             float timeToStayGoodNormalized = (1 / (timeToStayGoodPotion) * -timeLeft);
             fillAmountImage.color = Color.Lerp(Color.green, Color.red, timeToStayGoodNormalized);
@@ -155,6 +168,11 @@ public class KettleController : MonoBehaviour
         {
             potionFinishSound.Play();
             playSoundOnce = false;
+            if (isPlayerNearby)
+            {
+                ShowTutorialText(true);
+            }
+            
         }
     }
 
@@ -164,21 +182,25 @@ public class KettleController : MonoBehaviour
         {
             case 0:
                 checkmarkImageOK.enabled = false;
+                checkmarkImageWarningBG.enabled = false;
                 checkmarkImageWarning.enabled = false;
                 checkmarkImageNOK.enabled = false;
                 break;
             case 1:
                 checkmarkImageOK.enabled = true;
+                checkmarkImageWarningBG.enabled = false;
                 checkmarkImageWarning.enabled = false;
                 checkmarkImageNOK.enabled = false;
                 break;
             case 2:
                 checkmarkImageOK.enabled = false;
+                checkmarkImageWarningBG.enabled = true;
                 checkmarkImageWarning.enabled = true;
                 checkmarkImageNOK.enabled = false;
                 break;
             case 3:
                 checkmarkImageOK.enabled = false;
+                checkmarkImageWarningBG.enabled = false;
                 checkmarkImageWarning.enabled = false;
                 checkmarkImageNOK.enabled = true;
                 break;
@@ -299,6 +321,7 @@ public class KettleController : MonoBehaviour
         {
             ingredientSprite.sprite = null;
         }
+        animator.SetBool(IsOvercooking, false);
     }
 
     private void OverCooked()
@@ -306,6 +329,7 @@ public class KettleController : MonoBehaviour
         isOvercooked = true;
         ColorIngredientSprites(true);
         smokeAnimator.SetTrigger("overcooked");
+        animator.SetBool(IsOvercooking, true);
         kettleVerkacktSound.Play();
     }
 
@@ -333,7 +357,15 @@ public class KettleController : MonoBehaviour
     {
         if (show)
         {
-            textUIController.ChangeTutorialText(0);
+            if (isPotionReady)
+            {
+                textUIController.ChangeTutorialText(5);
+            }
+            else
+            {
+                textUIController.ChangeTutorialText(0);
+            }
+            
         }
         else
         {
@@ -349,6 +381,7 @@ public class KettleController : MonoBehaviour
         if ( col.CompareTag("Player"))
         {
             selectSprite.enabled = true;
+            isPlayerNearby = true;
             
         }
     }
@@ -358,7 +391,8 @@ public class KettleController : MonoBehaviour
         if ( other.CompareTag("Player"))
         {
             selectSprite.enabled = false;
-            
+            isPlayerNearby = false;
+
         }
     }
     private IEnumerator SetCheckMarkWarning(float time)

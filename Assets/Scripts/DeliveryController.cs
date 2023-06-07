@@ -9,9 +9,10 @@ public class DeliveryController : MonoBehaviour
     private TextUIController textUIController;
 
     [SerializeField] private Animator animator;
-
-
+    
     [SerializeField] private SpriteRenderer selectSprite;
+
+    [SerializeField] private GameObject arrow;
     private void Awake()
     {
         gameController = FindObjectOfType<GameController>();
@@ -29,6 +30,11 @@ public class DeliveryController : MonoBehaviour
         {
             textUIController.HideTutorialText();
         }
+    }
+
+    public void ShowArrow(bool show)
+    {
+        arrow.SetActive(show);
     }
     
     public void DeliverOrder(Potion potion)

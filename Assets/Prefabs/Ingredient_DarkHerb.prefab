@@ -55,6 +55,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_DarkHerb
       objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/SFX/Kettle/Kettle_throw_splash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1032595230
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1257243643
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 1052310973
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728432435901724868, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 403522018
+      objectReference: {fileID: 0}
     - target: {fileID: 6193807157784764701, guid: c7e68a85ad7f13d49898cf5f6d226ca8, type: 3}
       propertyPath: m_Color.b
       value: 1

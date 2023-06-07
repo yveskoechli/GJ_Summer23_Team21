@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
             ShowCarryItem(null, false);
             carryedItem = null;
             deliverPotionSound.Play();
+            deliveryController.ShowArrow(false);
             return;
         }
         
@@ -197,6 +198,7 @@ public class PlayerController : MonoBehaviour
                 {
                     ShowCarryItem(carryedItem, true);
                     carryedItem.PlayPickUpSound();
+                    deliveryController.ShowArrow(true);
                     //pickupPotionSound.Play();
                 }
             }
