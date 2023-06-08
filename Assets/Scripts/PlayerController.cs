@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         input.Player.ClearKettle.performed += ClearKettle;
         
     }
-    
+
     private void OnEnable()
     {
         EnableInput();
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
             if (actualTable.IsEmpty())
             {
                 PlaceItem();
-                placeItemSound.Play();
+                //placeItemSound.Play();
             }
             
         }
@@ -325,10 +325,11 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimation()
     {
+        
         Vector2 velocity = rbPlayer.velocity;
         animator.SetFloat(HorizontalSpeed, velocity.x);
         animator.SetFloat(VerticalSpeed, velocity.y);
-        
+
         animator.SetBool(IsCarrying, !IsCarryingNull);
         
         //Debug.Log("Veloctiy x: " + velocity.x + " Velocity y: " + velocity.y);

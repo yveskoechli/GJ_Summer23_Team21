@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroupEndscreen;
     [SerializeField] private GameObject endscreenUI;
     [SerializeField] private Selectable selectableEndscreenButton;
+
+    [SerializeField] private CanvasGroup fadeUI;
     
     [SerializeField] private string nextLevel = "Main_Menu";
 
@@ -41,6 +43,7 @@ public class GameController : MonoBehaviour
         
         highlightedColor.a = highlightedAlpha;
         disabledColor.a = disabledAlpha;
+        fadeUI.alpha = 1;
         
     }
 
@@ -90,6 +93,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         EnterPlayMode();
+        DOTween.To(() => fadeUI.alpha, x => fadeUI.alpha = x, 0f, 1);
     }
 
     private void OnDisable()
@@ -161,19 +165,34 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(time);
         SetEmote(progressPoints);
     }
+    
+    
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string sceneName = SceneManager.GetActiveScene().name;
+        fadeUI.alpha = 0f;
+        DOTween.Sequence().Append(fadeUI.DOFade(1f,0.5f)).SetUpdate(true).OnComplete(() => { LoadScene(sceneName); });
     }
+
+    
     
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(nextLevel);
+        DOTween.Sequence().Append(fadeUI.DOFade(1f,1f)).SetUpdate(true).OnComplete(() => { LoadScene(nextLevel); });
+        //SceneManager.LoadScene(nextLevel);
     }
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        DOTween.Sequence().Append(fadeUI.DOFade(1f,1f)).SetUpdate(true).OnComplete(() => { LoadScene("MainMenu"); });
+        //SceneManager.LoadScene("MainMenu");
     }
+    
+    private TweenCallback LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        return null;
+    }
+    
     
 }

@@ -42,6 +42,7 @@ public class Table : MonoBehaviour
             //oldItemPlace = item.gameObject.GetComponentInParent<Transform>();
             itemTemporary.GetComponent<SpriteRenderer>().enabled = true;
             itemTemporary.transform.SetParent(itemPlace.transform, false);
+            itemTemporary.PlayPickUpSound();
             ShowTutorialText(true);
         }
         

@@ -79,8 +79,9 @@ public class KettleController : MonoBehaviour
         isPotionReady = false;
         canCountDown = false;
         isOvercooked = false;
+        brewedPotion = null;
         SetCheckMark(0);
-        
+
         orderSpawner = FindObjectOfType<OrderSpawner>();
         combinationManager = FindObjectOfType<CombinationManager>();
         animator = GetComponent<Animator>();
@@ -89,7 +90,8 @@ public class KettleController : MonoBehaviour
         ShowTutorialText(false);
         EnableBrewStateUI(false);
 
-        ClearKettle();
+        //ClearKettle();
+        ClearIngredients();
         
         blubberIdleSound.Play();
     }
